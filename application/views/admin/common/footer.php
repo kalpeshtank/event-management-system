@@ -16,8 +16,7 @@
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
     </div>
-    <strong>Copyright &copy; 2017 Raghuveer Automations. All Rights Reserved.</strong>
+    <strong>Copyright &copy; 2017 Taank Kalpesh. All Rights Reserved.</strong>
 </footer>
-<link rel="stylesheet" href="<?php echo $base_url; ?>css/swayamgst.css">
 </body>
 </html>
