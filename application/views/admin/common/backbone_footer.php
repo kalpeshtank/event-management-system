@@ -1,7 +1,7 @@
-<!--<script type="text/javascript" src="<?php echo base_url() ?>js/gst/entity.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>js/admin/server/category.js"></script>
 <script type="text/javascript" >
     $(function () {
-        GstEntity.run();
+        Category.run();
         Backbone.history.start();
     });
-</script>-->
+</script>

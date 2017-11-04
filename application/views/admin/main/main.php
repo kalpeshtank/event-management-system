@@ -6,5 +6,5 @@
 </div>
 
 <?php
-//$this->load->view('admin/main/voucher_types_template');
+$this->load->view('admin/main/category_template');
 
