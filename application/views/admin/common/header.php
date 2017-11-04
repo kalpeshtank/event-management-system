@@ -83,6 +83,7 @@
         <script src="<?php echo $base_url; ?>js/admin/fuelux/fuelux.spinner.js" type="text/javascript"></script>
         <script src="<?php echo $base_url; ?>js/admin/ace/elements.spinner.js" type="text/javascript"></script>
         <script src="<?php echo $base_url; ?>js/admin/plugins/datetimepicker/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="<?php echo base_url() ?>js/utility.js"></script>
 
         <!--------------------------- Template definitions start ------------------------------------------------>
         <script id="option_template" type="text/x-handlebars-template">
@@ -139,20 +140,20 @@
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <img src="<?php echo $base_url; ?>adminLTE/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                                    <span class="hidden-xs" style="text-transform: capitalize;"><?php // echo get_from_session('name');   ?></span>
+                                    <span class="hidden-xs" style="text-transform: capitalize;"><?php echo get_from_session('name'); ?></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- User image -->
                                     <li class="user-header">
                                         <img src="<?php echo $base_url; ?>adminLTE/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                                        <p style="text-transform: capitalize;"><?php // echo get_from_session('name');   ?></p>
+                                        <p style="text-transform: capitalize;"><?php echo get_from_session('name'); ?></p>
                                     </li>
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="login/change_password" class="btn btn-default btn-flat">Change Password</a>
+                                            <a href="<?php echo $base_url; ?>admin/login/change_password" class="btn btn-default btn-flat">Change Password</a>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="<?php echo base_url(); ?>login/logout" class="btn btn-default btn-flat">Sign out</a>
+                                            <a href="<?php echo $base_url; ?>admin/login/logout" class="btn btn-default btn-flat">Sign out</a>
                                         </div>
                                     </li>
                                 </ul>
