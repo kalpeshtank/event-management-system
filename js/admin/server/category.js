@@ -1,6 +1,7 @@
 var categoryListTemplate = Handlebars.compile($('#category_list_template').html());
 var categoryTableTemplate = Handlebars.compile($('#category_table_template').html());
 var categoryFormTemplate = Handlebars.compile($('#category_form_template').html());
+var categoryActionButtonsTemplate = Handlebars.compile($('#category_action_button_template').html());
 var Category = {
     run: function () {
         this.router = new this.Router();
@@ -29,9 +30,8 @@ Category.listView = Backbone.View.extend({
         this.loadCategoryTable();
     },
     loadCategoryTable: function () {
-        var groupActionRenderer = function (data, type, full, meta) {
-            return '';
-//            return groupActionButtonsTemplate({"group_id": data});
+        var categoryActionRenderer = function (data, type, full, meta) {
+            return categoryActionButtonsTemplate({"category_id": data});
         };
         categoryDataTable = $('#category_table').DataTable({
             ajax: {url: 'admin/category/get_category', dataSrc: "", type: "post"},
@@ -43,8 +43,8 @@ Category.listView = Backbone.View.extend({
                 {
                     "className": '',
                     "orderable": false,
-                    "data": 'group_id',
-                    "render": groupActionRenderer
+                    "data": 'category_id',
+                    "render": categoryActionRenderer
                 }
             ]
         });
@@ -54,6 +54,7 @@ Category.listView = Backbone.View.extend({
         $('#update_category_btn').hide();
     },
     saveCategory: function () {
+        var that = this;
         var categoryFormData = $('#category_form').serializeFormJSON();
         if (categoryFormData.category_name == '') {
             showError('Please Enter Category Name');
@@ -77,7 +78,7 @@ Category.listView = Backbone.View.extend({
         }
         $.ajax({
             type: 'POST',
-            url: "category/" + url + '_category',
+            url: "admin/category/" + url + '_category',
             data: categoryFormData,
             success: function (data) {
                 var parseData = JSON.parse(data);
@@ -88,44 +89,42 @@ Category.listView = Backbone.View.extend({
                 } else if (url == 'update') {
                     $('#update_category_btn').show();
                 }
-
                 if (parseData.success == false) {
                     showError(parseData.message);
                     return false;
                 }
                 showSuccess(parseData.message);
-                var currentGroupData = parseData.group_data;
-                switch (parseInt(currentGroupData.default_group_id)) {
-                    case GROUP_TYPE_PURCHASE:
-                        purchaseGroups.push(currentGroupData.group_id);
-                        break;
-                    case GROUP_TYPE_SALES:
-                        salesGroups.push(currentGroupData.group_id);
-                        break;
-                    case GROUP_TYPE_INVENTORIES:
-                        inventoriesGroups.push(currentGroupData.group_id);
-                        break;
-                    case GROUP_TYPE_OPENING_STOCK:
-                        openingStockGroups.push(currentGroupData.group_id);
-                        break;
-                    case GROUP_TYPE_CLOSING_STOCK:
-                        closingStockGroups.push(currentGroupData.group_id);
-                        break;
+                categoryDataTable.ajax.reload();
+                that.newCategory();
+            }
+        });
+    },
+    deleteCategory: function (categoryId) {
+        $.ajax({
+            type: 'POST',
+            url: "admin/category/delete_category",
+            data: {"category_id": categoryId},
+            success: function (data) {
+                var parseData = JSON.parse(data);
+                if (parseData.success == false) {
+                    showError(parseData.message);
+                    return false;
                 }
-                groupData[currentGroupData.group_id] = currentGroupData;
-                //Group.listview.listPage();
-                groupsDataTable.ajax.reload();
-                if (openForms.length != 0 && url == 'create') {
-                    Group.listview.newGroup();
-                    renderOptionsForTwoDimensionalArrayWithKeyValue(groupData, "parent_group", 'group_id', 'group_name', 'group_alias_name');
-                } else {
-                    if (url == 'create') {
-                        Group.listview.newGroup();
-                    } else {
-                        $('#group_form_div').html('');
-                    }
-                }
-
+                showSuccess(parseData.message);
+                categoryDataTable.ajax.reload();
+            }
+        });
+    },
+    editCategory: function (categoryId) {
+        var that = this;
+        $.ajax({
+            type: 'POST',
+            url: "admin/category/get_category_by_id",
+            data: {"category_id": categoryId},
+            success: function (data) {
+                var parseData = JSON.parse(data);
+                $('#category_form_div').html(categoryFormTemplate({"category_data": parseData.category_data}));
+                $('#save_category_btn').hide();
             }
         });
     }

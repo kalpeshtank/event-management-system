@@ -4,7 +4,7 @@
             <tr>
                 <th>Category Name</th>
                 <th>Description</th>
-                <th>Actions</th>
+                <th style="width: 20%">Actions</th>
             </tr>
         </thead>
     </table>
