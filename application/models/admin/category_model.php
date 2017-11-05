@@ -50,4 +50,19 @@ class Category_model extends CI_Model {
         return $this->db->get()->row_array();
     }
 
+    /**
+     * get category info by category data
+     * @param type $category
+     * @param type $
+     * @return type
+     */
+    function get_categoryy_info($category) {
+        $this->db->where('category_name', $category['category_name']);
+        if ($category['category_id'] != '') {
+            $this->db->where('category_id !=' . $category['category_id']);
+        }
+        $recs = $this->db->get('category');
+        return $recs->result_array();
+    }
+
 }

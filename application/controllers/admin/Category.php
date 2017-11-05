@@ -32,6 +32,10 @@ class Category extends CI_Controller {
         }
         $category_data['created_by'] = get_from_post('user_id');
         $category_data['created_time'] = date('Y-m-d H:i:s');
+        if ($this->_check_category_exists($category_data)) {
+            echo json_encode(array('success' => false, 'message' => 'Category Exists'));
+            return;
+        }
         $this->db->trans_start();
         $category_id = $this->category_model->create($category_data);
         $this->db->trans_complete();
@@ -48,6 +52,10 @@ class Category extends CI_Controller {
     function update_category() {
         $category_data = $this->_get_category_data_from_post();
         $category_id = get_from_post('category_id');
+        if ($this->_check_category_exists($category_data)) {
+            echo json_encode(array('success' => false, 'message' => 'Category Exists'));
+            return;
+        }
         $this->db->trans_start();
         $this->category_model->update($category_id, $category_data);
         $this->db->trans_complete();
@@ -101,6 +109,19 @@ class Category extends CI_Controller {
         $category_id = get_from_post('category_id');
         $category_data = $this->category_model->get_category_by_id($category_id);
         echo json_encode(array('category_data' => $category_data));
+    }
+
+    /**
+     * check for category exist or not by category_data
+     * @return type
+     */
+    function _check_category_exists($category_data) {
+        $category_data['category_id'] = $this->input->post('category_id');
+        $category_info = $this->category_model->get_categoryy_info($category_data);
+        if (!empty($category_info)) {
+            return true;
+        }
+        return false;
     }
 
 }
