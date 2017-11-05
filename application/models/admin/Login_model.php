@@ -47,9 +47,9 @@ class Login_model extends CI_Model {
     }
 
     function check_for_existing_user($signup_data) {
-        $this->master_db->where('username', $signup_data['username']);
-        $this->master_db->from('user');
-        $resc = $this->master_db->get();
+        $this->db->where('username', $signup_data['username']);
+        $this->db->from('user');
+        $resc = $this->db->get();
         return $resc->row_array();
     }
 

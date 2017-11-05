@@ -48,7 +48,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-12" style="padding-top: 13px;">
-                            <a href="<?php echo $base_url; ?>admin/signup" class="btn btn-block btn-social btn-success btn-flat disabled"style="text-align: center;"><i class="fa fa-user-plus"></i>Sign Up For New User</a>
+                            <a href="<?php echo $base_url; ?>admin/signup" class="btn btn-block btn-social btn-success btn-flat"style="text-align: center;"><i class="fa fa-user-plus"></i>Sign Up For New User</a>
                         </div>
                     </div>
                 </form>

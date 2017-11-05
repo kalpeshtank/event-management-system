@@ -24,14 +24,10 @@
             </div>
             <div class="register-box-body">
                 <p class="login-box-msg">Register a new membership</p>
-                <form action="" method="post" onsubmit="return false;" id="registration_form">
+                <form action="" method="post" onsubmit="return false;" id="registration_form" autocomplete="off">
                     <div class="form-group has-feedback">
                         <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Full name">
                         <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                    </div>
-                    <div class="form-group has-feedback">
-                        <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Company Name">
-                        <span class="glyphicon glyphicon-home form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">
                         <input type="email" class="form-control" id="user_email" name="user_email" placeholder="Email">
@@ -40,10 +36,6 @@
                     <div class="form-group has-feedback">
                         <input type="password" class="form-control" id="user_password" name="user_password" placeholder="Password">
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                    </div>
-                    <div class="form-group has-feedback">
-                        <input type="text" class="form-control" id="mobile_number" name="mobile_number" placeholder="Mobile Number">
-                        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
                     </div>
                     <div class="row">
                         <div class="col-xs-4"></div>
@@ -99,11 +91,6 @@
                     $('#user_password').focus();
                     return false;
                 }
-                if (userFormData.mobile_number == "") {
-                    showError('Please Enter Mobile Number');
-                    $('#mobile_number').focus();
-                    return false;
-                }
                 $.ajax({
                     type: 'POST',
                     url: "signup/create",
@@ -117,7 +104,7 @@
                             showError(parseData.message);
                             return false;
                         }
-                        window.location = '<?php echo base_url() . "login" ?>';
+                        window.location = '<?php echo base_url() . "admin/login" ?>';
                         showSuccess('You have Succesfully Registered');
                     }
                 });
