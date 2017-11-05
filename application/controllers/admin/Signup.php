@@ -28,12 +28,6 @@ class Signup extends CI_Controller {
             return;
         }
         $user_id = $this->login_model->insert_signup_data($signup_data);
-        $subscription_data = $this->_get_subscription_data($user_id);
-        $subscription_id = $this->login_model->insert_subscription_data($subscription_data);
-        $subscription_account_data = $this->_get_subscription_account_data($subscription_id, $user_id);
-        $subscriber_account_id = $this->login_model->insert_subscription_account_data($subscription_account_data);
-        $subscription_account_user_data = $this->_get_subscription_account_user_data($subscriber_account_id, $user_id);
-        $this->login_model->insert_subscription_account_user_data($subscription_account_user_data);
         echo json_encode(array('success' => true));
     }
 
@@ -47,49 +41,8 @@ class Signup extends CI_Controller {
         );
     }
 
-    function _get_subscription_data($user_id) {
-        $subscription_start_date = date('Y-m-d');
-        $subscription_valid_upto_date_obj = new DateTime(date('Y-m-d'));
-        $subscription_valid_upto_date_obj->modify('+1 Month');
-        return array(
-            'subscription_name' => 'subscription1',
-            'number_of_users' => 1,
-            'number_of_entity' => 1,
-            'subscription_start_date' => $subscription_start_date,
-            'subscription_valid_upto' => $subscription_valid_upto_date_obj->format('Y-m-d'),
-            'created_by' => $user_id,
-            'created_time' => date('Y-m-d H:i:s'),
-        );
-    }
-
-    function _get_subscription_account_data($subscription_id, $user_id) {
-        $final_company_name = '';
-        $company_name = $this->input->post('company_name');
-        if ($company_name == '') {
-            $final_company_name = $this->input->post('user_name');
-        } else {
-            $final_company_name = $this->input->post('company_name');
-        }
-        return array(
-            'subscription_id' => $subscription_id,
-            'contact_person_name' => $this->input->post('user_name'),
-            'subscriber_account_name' => $final_company_name,
-            'address' => '',
-            'phone_number' => $this->input->post('mobile_number'),
-            'email' => $this->input->post('user_email'),
-            'database_id' => 1,
-            'created_by' => $user_id,
-            'created_time' => date('Y-m-d H:i:s')
-        );
-    }
-
-    function _get_subscription_account_user_data($subscriber_account_id, $user_id) {
-        return array(
-            'user_id' => $user_id,
-            'subscriber_account_id' => $subscriber_account_id,
-            'permission' => '',
-            'relationship_type' => OWNER
-        );
-    }
-
 }
+
+/*
+ * EOF: ./application/controllers/admin/Signup.php
+ */

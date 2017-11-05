@@ -104,5 +104,5 @@ class Login extends CI_Controller {
 }
 
 /*
- * EOF: ./application/controllers/Login.php
+ * EOF: ./application/controllers/admin/Login.php
  */

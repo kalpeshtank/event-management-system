@@ -15,3 +15,7 @@ class Main extends CI_Controller {
     }
 
 }
+
+/*
+ * EOF: ./application/controllers/admin/Main.php
+ */

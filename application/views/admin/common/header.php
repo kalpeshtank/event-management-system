@@ -111,8 +111,10 @@
                         });
                     });-->
         <script type="text/javascript">
-
             //------------------------------ These are the pre-compiled templates ---------------------------------
+            var optionTemplate = Handlebars.compile($("#option_template").html());
+            var spinnerTemplate = Handlebars.compile($("#spinner_template").html());
+            var iconTemplate = Handlebars.compile($("#icon_template").html());
             var baseUrl = '<?php echo $base_url; ?>';
             $(document).ajaxComplete(function () {
                 $('[data-toggle="tooltip"]').tooltip();

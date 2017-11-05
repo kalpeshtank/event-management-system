@@ -27,29 +27,30 @@ function datePicker() {
             }
         }
     });
-    function validateEmail(sEmail) {
-        var filter = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
-        if (filter.test(sEmail)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    function roundOff(obj) {
-        var amount = obj.val();
-        if ($.isNumeric(amount)) {
-            obj.val(parseFloat(amount).toFixed(2));
-        }
-    }
-
-
-    var width = parseFloat($(window).width());
-    if (width < 1400) {
-        $('body').addClass('sidebar-collapse');
+}
+function validateEmail(sEmail) {
+    var filter = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+    if (filter.test(sEmail)) {
+        return true;
     } else {
-        $('body').removeClass('sidebar-collapse');
+        return false;
     }
+}
+
+function roundOff(obj) {
+    var amount = obj.val();
+    if ($.isNumeric(amount)) {
+        obj.val(parseFloat(amount).toFixed(2));
+    }
+}
+
+
+var width = parseFloat($(window).width());
+if (width < 1400) {
+    $('body').addClass('sidebar-collapse');
+} else {
+    $('body').removeClass('sidebar-collapse');
+}
 
 
 

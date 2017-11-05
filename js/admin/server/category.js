@@ -54,5 +54,79 @@ Category.listView = Backbone.View.extend({
         $('#update_category_btn').hide();
     },
     saveCategory: function () {
+        var categoryFormData = $('#category_form').serializeFormJSON();
+        if (categoryFormData.category_name == '') {
+            showError('Please Enter Category Name');
+            $('#category_name').focus();
+            return false;
+        }
+        if (categoryFormData.category_description == '') {
+            showError('Please Enter Category Description');
+            $('#category_description').focus();
+            return false;
+        }
+        $('#spinner_category_btn').html(spinnerTemplate);
+        $('#spinner_category_btn').show();
+        $('#save_category_btn').hide();
+        $('#update_category_btn').hide();
+        var url;
+        if (categoryFormData.category_id == '') {
+            url = 'create';
+        } else {
+            url = 'update';
+        }
+        $.ajax({
+            type: 'POST',
+            url: "category/" + url + '_category',
+            data: categoryFormData,
+            success: function (data) {
+                var parseData = JSON.parse(data);
+                $('#spinner_category_btn').html('');
+                $('#spinner_category_btn').hide();
+                if (url == 'create') {
+                    $('#save_category_btn').show();
+                } else if (url == 'update') {
+                    $('#update_category_btn').show();
+                }
+
+                if (parseData.success == false) {
+                    showError(parseData.message);
+                    return false;
+                }
+                showSuccess(parseData.message);
+                var currentGroupData = parseData.group_data;
+                switch (parseInt(currentGroupData.default_group_id)) {
+                    case GROUP_TYPE_PURCHASE:
+                        purchaseGroups.push(currentGroupData.group_id);
+                        break;
+                    case GROUP_TYPE_SALES:
+                        salesGroups.push(currentGroupData.group_id);
+                        break;
+                    case GROUP_TYPE_INVENTORIES:
+                        inventoriesGroups.push(currentGroupData.group_id);
+                        break;
+                    case GROUP_TYPE_OPENING_STOCK:
+                        openingStockGroups.push(currentGroupData.group_id);
+                        break;
+                    case GROUP_TYPE_CLOSING_STOCK:
+                        closingStockGroups.push(currentGroupData.group_id);
+                        break;
+                }
+                groupData[currentGroupData.group_id] = currentGroupData;
+                //Group.listview.listPage();
+                groupsDataTable.ajax.reload();
+                if (openForms.length != 0 && url == 'create') {
+                    Group.listview.newGroup();
+                    renderOptionsForTwoDimensionalArrayWithKeyValue(groupData, "parent_group", 'group_id', 'group_name', 'group_alias_name');
+                } else {
+                    if (url == 'create') {
+                        Group.listview.newGroup();
+                    } else {
+                        $('#group_form_div').html('');
+                    }
+                }
+
+            }
+        });
     }
 });

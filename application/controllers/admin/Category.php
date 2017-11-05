@@ -19,8 +19,17 @@ class Category extends CI_Controller {
         echo json_encode($category_data);
     }
 
+    function create_category() {
+        
+    }
+
+    function update_category() {
+        
+    }
+
 }
 
 /*
- * EOF: ./application/controllers/Login.php
+ * EOF: ./application/controllers/admin/Category.php
  */
+
