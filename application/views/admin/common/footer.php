@@ -16,7 +16,7 @@
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
     </div>
-    <strong>Copyright &copy; 2017 Taank Kalpesh. All Rights Reserved.</strong>
+    <strong>Copyright &copy; 2017 Event Management. All Rights Reserved.</strong>
 </footer>
 </body>
 </html>
