@@ -119,7 +119,7 @@
             });
         </script>
     </head>
-    <body class="hold-transition skin-green-light sidebar-mini">
+    <body class="hold-transition skin-blue-light sidebar-mini">
         <div class="wrapper">
             <header class="main-header">
                 <!-- Logo -->

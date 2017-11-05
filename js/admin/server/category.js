@@ -20,24 +20,39 @@ Category.Router = Backbone.Router.extend({
 Category.listView = Backbone.View.extend({
     el: 'div#main_container',
     events: {
-        'click #new_group_btn': 'newGroup'
+        'click #save_category_btn': 'saveCategory',
+        'click #update_category_btn': 'saveCategory'
     },
     listPage: function () {
-        this.$el.append(categoryListTemplate);
-//        $('#group_data_table').html(categoryTableTemplate);
-//        this.loadGroupTable();
+        this.$el.html(categoryListTemplate);
+        $('#category_data_table').html(categoryTableTemplate);
+        this.loadCategoryTable();
     },
-    newGroup: function () {
-        if (!bookAuthenticated()) {
-            return false;
-        }
-        $('#group_form_div').html(groupFormTemplate);
-        $('#group_level').val(1);
-        $('#update_group_btn').hide();
-        renderOptionsForTwoDimensionalArrayWithKeyValue(groupData, "parent_group", 'group_id', 'group_name', 'group_alias_name');
-        $("#parent_group").append("<option value='0'>primary</option>");
-        renderOptionsForTwoDimensionalArray(accountTypeArray, 'group_type');
-        this.onchageGroupType();
-        $('.select2').select2({"allowClear": true});
+    loadCategoryTable: function () {
+        var groupActionRenderer = function (data, type, full, meta) {
+            return '';
+//            return groupActionButtonsTemplate({"group_id": data});
+        };
+        categoryDataTable = $('#category_table').DataTable({
+            ajax: {url: 'admin/category/get_category', dataSrc: "", type: "post"},
+            bAutoWidth: false,
+            ordering: false,
+            columns: [
+                {data: 'category_name'},
+                {data: 'category_description'},
+                {
+                    "className": '',
+                    "orderable": false,
+                    "data": 'group_id',
+                    "render": groupActionRenderer
+                }
+            ]
+        });
+    },
+    newCategory: function () {
+        $('#category_form_div').html(categoryFormTemplate);
+        $('#update_category_btn').hide();
+    },
+    saveCategory: function () {
     }
 });
