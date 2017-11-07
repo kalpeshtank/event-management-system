@@ -100,19 +100,24 @@ Category.listView = Backbone.View.extend({
         });
     },
     deleteCategory: function (categoryId) {
-        $.ajax({
-            type: 'POST',
-            url: "admin/category/delete_category",
-            data: {"category_id": categoryId},
-            success: function (data) {
-                var parseData = JSON.parse(data);
-                if (parseData.success == false) {
-                    showError(parseData.message);
-                    return false;
-                }
-                showSuccess(parseData.message);
-                categoryDataTable.ajax.reload();
+        getConfirm(function (result) {
+            if (result === false) {
+                return false;
             }
+            $.ajax({
+                type: 'POST',
+                url: "admin/category/delete_category",
+                data: {"category_id": categoryId},
+                success: function (data) {
+                    var parseData = JSON.parse(data);
+                    if (parseData.success == false) {
+                        showError(parseData.message);
+                        return false;
+                    }
+                    showSuccess(parseData.message);
+                    categoryDataTable.ajax.reload();
+                }
+            });
         });
     },
     editCategory: function (categoryId) {

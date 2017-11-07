@@ -51,7 +51,24 @@ if (width < 1400) {
 } else {
     $('body').removeClass('sidebar-collapse');
 }
-
+/**
+ * delete confom model
+ * @param {type} callback
+ * @returns {undefined}
+ */
+function getConfirm(callback) {
+    $('#delete_model').modal({"show": true, "backdrop": 'static', "keyboard": false});
+    $('#cancel_delete').one('click', function () {
+        $('#delete_model').modal('hide');
+        if (callback)
+            callback(false);
+    });
+    $('#confirm_delete').one('click', function () {
+        $('#delete_model').modal('hide');
+        if (callback)
+            callback(true);
+    });
+}
 
 
 

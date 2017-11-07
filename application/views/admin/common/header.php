@@ -165,3 +165,17 @@
                 </nav>
             </header>
             <?php $this->load->view('admin/common/sidebar'); ?>
+
+            <div class="modal fade" id="delete_model" role="dialog">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content"> 
+                        <div class="modal-body">
+                            <p class="msg">Are you sure you want to Delete?</p>
+                        </div>
+                        <div class="modal-body" style="text-align: right">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" id="confirm_delete"><b>YES</b></button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" id="cancel_delete"><b>NO</b></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
