@@ -1,4 +1,4 @@
--- Adminer 4.3.0 MySQL dump
+-- Adminer 4.3.1 MySQL dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -15,6 +15,28 @@ CREATE TABLE `category` (
   `updated_by` bigint(20) NOT NULL,
   `updated_time` datetime NOT NULL,
   PRIMARY KEY (`category_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `events`;
+CREATE TABLE `events` (
+  `event_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `category_id` bigint(20) NOT NULL,
+  `sub_category_id` bigint(20) NOT NULL,
+  `event_name` varchar(200) NOT NULL,
+  `event_organized_for` tinyint(1) NOT NULL,
+  `event_type` tinyint(1) NOT NULL,
+  `event_place` varchar(200) NOT NULL,
+  `event_start_date` date NOT NULL,
+  `event_end_date` date NOT NULL,
+  `event_start_time` time NOT NULL,
+  `event_end_time` time NOT NULL,
+  `event_description` text NOT NULL,
+  `created_by` bigint(20) NOT NULL,
+  `created_time` datetime NOT NULL,
+  `updated_by` bigint(20) NOT NULL,
+  `updated_time` datetime NOT NULL,
+  PRIMARY KEY (`event_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -46,6 +68,6 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `user` (`user_id`, `username`, `password`, `name`, `remarks`, `created_by`, `created_time`, `updated_by`, `updated_time`) VALUES
-(1,	'k.p.tank.143@gmail.com',	'62cc2d8b4bf2d8728120d052163a77df',	'kalpesh',	'',	0,	'2017-08-17 05:49:49',	1,	'2017-11-04 18:48:22');
+(1,	'k@gmail.com',	'fe01ce2a7fbac8fafaed7c982a04e229',	'kalpesh',	'',	0,	'2017-08-17 05:49:49',	1,	'2017-11-04 18:48:22');
 
--- 2017-11-05 14:44:52
+-- 2017-11-07 12:58:16
