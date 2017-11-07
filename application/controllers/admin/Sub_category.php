@@ -52,11 +52,6 @@ class Category extends CI_Controller {
     function update_category() {
         $category_data = $this->_get_category_data_from_post();
         $category_id = get_from_post('category_id');
-        $validation_massage = $this->_check_category_validation($category_data);
-        if ($validation_massage) {
-            echo json_encode(array('success' => FALSE, 'message' => $validation_massage));
-            return;
-        }
         if ($this->_check_category_exists($category_data)) {
             echo json_encode(array('success' => false, 'message' => 'Category Exists'));
             return;
