@@ -2,13 +2,13 @@
     <input type="hidden" name="sub_category_id" id="sub_category_id" class="form-control" value="{{sub_category_data.sub_category_id}}">
     <div class="box-body with-border">
         <div class="form-group row">
-            <label class="col-md-2 control-label">Sub Category Name</label>
+            <label class="col-md-2 control-label">Sub Category Name :</label>
             <div class="col-md-8">
                 <input type="text" name="sub_category_name" id="sub_category_name" class="form-control" placeholder="Sub Category Name" value="{{sub_category_data.sub_category_name}}">
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-md-2 control-label">Sub Category Description</label>
+            <label class="col-md-2 control-label">Description :</label>
             <div class="col-md-8">
                 <input type="text" name="sub_category_description" id="sub_category_description" class="form-control" placeholder="Sub Category Description"  value="{{sub_category_data.sub_category_description}}">
             </div>

@@ -2,13 +2,13 @@
     <input type="hidden" name="category_id" id="category_id" class="form-control" value="{{category_data.category_id}}">
     <div class="box-body with-border">
         <div class="form-group row">
-            <label class="col-md-2 control-label">Category Name</label>
+            <label class="col-md-2 control-label">Category Name :</label>
             <div class="col-md-8">
                 <input type="text" name="category_name" id="category_name" class="form-control" placeholder="Category Name" value="{{category_data.category_name}}">
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-md-2 control-label">Category Description</label>
+            <label class="col-md-2 control-label">Description :</label>
             <div class="col-md-8">
                 <input type="text" name="category_description" id="category_description" class="form-control" placeholder="Category Description"  value="{{category_data.category_description}}">
             </div>

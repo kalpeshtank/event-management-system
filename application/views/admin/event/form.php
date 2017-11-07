@@ -1,0 +1,33 @@
+<form role="form" method="post" name="event_form" id="event_form">
+    <input type="hidden" name="event_id" id="event_id" class="form-control" value="{{event_data.event_id}}">
+    <div class="box-body with-border">
+        <div class="form-group row">
+            <label class="col-md-2 control-label">Event Name :</label>
+            <div class="col-md-8">
+                <input type="text" name="event_name" id="event_name" class="form-control" placeholder="Event Name" value="{{event_data.event_name}}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 control-label">Event Description :</label>
+            <div class="col-md-8">
+                <input type="text" name="event_description" id="event_description" class="form-control" placeholder="Event Description"  value="{{event_data.event_description}}">
+            </div>
+        </div>
+    </div>
+    <div class="box-footer">
+        <button type="button" class="btn btn-xs btn-primary save_event_btn" id="save_event_btn">
+            <label class="fa fa-check label-btn-icon"></label>
+            &nbsp;<label class="label-btn-fonts">Save</label>
+        </button>
+        <button type="button" class="btn btn-xs btn-primary update_event_btn" id="update_event_btn">
+            <label class="fa fa-check label-btn-icon"></label>
+            &nbsp;<label class="label-btn-fonts">Update</label>
+        </button>
+        <a class="btn btn-xs btn-primary" id="spinner_event_btn" style="display: none">
+        </a>
+        <button type="button" class="btn btn-xs btn-default" id="cancel_event_btn" onclick="$('#event_form').html('');">
+            <label class="fa fa-close label-btn-icon"></label>
+            &nbsp;<label class="label-btn-fonts">Cancel</label>
+        </button>
+    </div>
+</form>

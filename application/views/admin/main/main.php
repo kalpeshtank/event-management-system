@@ -8,4 +8,5 @@
 <?php
 $this->load->view('admin/main/category_template');
 $this->load->view('admin/main/sub_category_template');
+$this->load->view('admin/main/event_template');
 
