@@ -10,35 +10,11 @@
                     <i class="fa fa-briefcase"></i> <span>Category</span>
                 </a>
             </li>
-            <!--            <li>
-                            <a href="#"><i class="fa fa-at"></i><span>Accounts</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li>
-                                    <a href="main#accounts/list">
-                                        <i class="fa fa-at"></i><span>Manage Accounts</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="main#account_opening_balance/list">
-                                        <i class="fa fa-rupee"></i><span>Opening Balances</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="main#group/list">
-                                        <i class="fa fa-users"></i><span>Group</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#voucher_types/list">
-                                        <i class="fa fa-tags"></i><span>Voucher Types</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>-->
+            <li>
+                <a href="admin#sub_category/list">
+                    <i class="fa fa-briefcase"></i> <span>Sub-Category</span>
+                </a>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->

@@ -30,7 +30,7 @@ class Category extends CI_Controller {
             echo json_encode(array('success' => FALSE, 'message' => $validation_massage));
             return;
         }
-        $category_data['created_by'] = get_from_post('user_id');
+        $category_data['created_by'] =  get_from_session('user_id');
         $category_data['created_time'] = date('Y-m-d H:i:s');
         if ($this->_check_category_exists($category_data)) {
             echo json_encode(array('success' => false, 'message' => 'Category Exists'));

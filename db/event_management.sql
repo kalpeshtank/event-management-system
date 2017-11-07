@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `sub_category`;
 CREATE TABLE `sub_category` (
   `sub_category_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `sub_category_name` varchar(200) NOT NULL,
-  `sun_category_description` text NOT NULL,
+  `sub_category_description` text NOT NULL,
   `created_by` bigint(20) NOT NULL,
   `created_time` datetime NOT NULL,
   `updated_by` bigint(20) NOT NULL,
