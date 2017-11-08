@@ -8,6 +8,40 @@
             </div>
         </div>
         <div class="form-group row">
+            <label class="col-md-2 control-label">Category:</label>
+            <div class="col-md-8">
+                <select name="category" id="category" class="form-control select2" data-placeholder="Select Category">
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 control-label">Sub-Category:</label>
+            <div class="col-md-8">
+                <select name="sub_category" id="sub_category" class="form-control select2" data-placeholder="Select Sub-Category">
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div>
+                <label class="radio">
+                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                    Option one is this and that—be sure to include why it's great
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                    Option two can be something else and selecting it will deselect option one
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled="">
+                    Option three is disabled
+                </label>
+            </div>
+        </div>
+        <div class="form-group row">
             <label class="col-md-2 control-label">Event Description :</label>
             <div class="col-md-8">
                 <input type="text" name="event_description" id="event_description" class="form-control" placeholder="Event Description"  value="{{event_data.event_description}}">
