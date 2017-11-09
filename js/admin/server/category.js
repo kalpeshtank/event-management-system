@@ -94,6 +94,7 @@ Category.listView = Backbone.View.extend({
                     return false;
                 }
                 showSuccess(parseData.message);
+                categoryData[parseData.category_data['category_id']] = parseData.category_data;
                 categoryDataTable.ajax.reload();
                 that.newCategory();
             }

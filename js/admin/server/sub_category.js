@@ -93,6 +93,7 @@ SubCategory.listView = Backbone.View.extend({
                     return false;
                 }
                 showSuccess(parseData.message);
+                subCategoryData[parseData.sub_category_data['sub_category_id']] = parseData.sub_category_data;
                 SubCategoryDataTable.ajax.reload();
                 that.newSubCategory();
             }

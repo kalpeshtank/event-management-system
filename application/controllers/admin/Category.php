@@ -7,12 +7,12 @@ class Category extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('admin/category_model');
         check_admin_authenticated();
+        $this->load->model('admin/category_model');
     }
 
     /**
-     * get all Category dara
+     * get all Category data
      */
     function get_category() {
         $category_data = $this->category_model->get_all_category_data();
@@ -30,20 +30,20 @@ class Category extends CI_Controller {
             echo json_encode(array('success' => FALSE, 'message' => $validation_massage));
             return;
         }
-        $category_data['created_by'] =  get_from_session('user_id');
+        $category_data['created_by'] = get_from_session('user_id');
         $category_data['created_time'] = date('Y-m-d H:i:s');
         if ($this->_check_category_exists($category_data)) {
             echo json_encode(array('success' => false, 'message' => 'Category Exists'));
             return;
         }
         $this->db->trans_start();
-        $category_id = $this->category_model->create($category_data);
+        $category_data['category_id'] = $this->category_model->create($category_data);
         $this->db->trans_complete();
         if ($this->db->trans_status() === FALSE) {
             echo json_encode(array('success' => false, 'message' => 'Db Error Occured'));
             return;
         }
-        echo json_encode(array('success' => true, 'message' => 'Category Add Successflly!'));
+        echo json_encode(array('success' => true, 'message' => 'Category Add Successflly!', 'category_data' => $category_data));
     }
 
     /**
@@ -63,12 +63,13 @@ class Category extends CI_Controller {
         }
         $this->db->trans_start();
         $this->category_model->update($category_id, $category_data);
+        $category_data['category_id'] = $category_id;
         $this->db->trans_complete();
         if ($this->db->trans_status() === FALSE) {
             echo json_encode(array('success' => FALSE, 'message' => 'Some unexpected database error encountered due to which your transaction could not be completed'));
             return;
         }
-        echo json_encode(array('success' => TRUE, 'message' => 'Category Update Successflly!'));
+        echo json_encode(array('success' => TRUE, 'message' => 'Category Update Successflly!', 'category_data' => $category_data));
     }
 
     function _get_category_data_from_post() {

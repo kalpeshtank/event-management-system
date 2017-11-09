@@ -12,7 +12,6 @@
             <label class="col-md-5 control-label">Category :</label>
             <div class="col-md-7">
                 <select name="category_id" id="category_id" tabindex="2" class="form-control select2" data-placeholder="Select Category" style="width: 100%;">
-                    <option value=""></option>
                 </select>
             </div>
         </div>
@@ -20,7 +19,6 @@
             <label class="col-md-5 control-label">Sub-Category :</label>
             <div class="col-md-7">
                 <select name="sub_category_id" id="sub_category_id" tabindex="3" class="form-control select2" data-placeholder="Select Sub-Category" style="width: 100%;">
-                    <option value="0">Select</option>
                 </select>
             </div>
         </div> 
@@ -28,7 +26,6 @@
             <label class="col-md-5 control-label">Organized-For :</label>
             <div class="col-md-7">
                 <select name="organized_for" id="organized_for" tabindex="4" class="form-control select2" data-placeholder="Select.." style="width: 100%;">
-                    <option value="0">Select</option>
                 </select>
             </div>
         </div>
@@ -36,7 +33,6 @@
             <label class="col-md-5 control-label">Event-Type :</label>
             <div class="col-md-7">
                 <select name="event_type" id="event_type" tabindex="5" class="form-control select2" data-placeholder="Select.." style="width: 100%;">
-                    <option value="0">Select</option>
                 </select>
             </div>
         </div>

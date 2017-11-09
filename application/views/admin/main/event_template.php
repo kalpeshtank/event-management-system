@@ -7,3 +7,6 @@
 <script type="text/x-handlebars-template" id="event_table_template">
     <?php $this->load->view('admin/event/table'); ?>
 </script>
+<script type="text/x-handlebars-template" id="event_action_button_template">
+    <?php $this->load->view('admin/event/action_button'); ?>
+</script>

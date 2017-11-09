@@ -37,13 +37,13 @@ class Sub_category extends CI_Controller {
             return;
         }
         $this->db->trans_start();
-        $sub_category_id = $this->sub_category_model->create($sub_category_data);
+        $sub_category_data['sub_category_id'] = $this->sub_category_model->create($sub_category_data);
         $this->db->trans_complete();
         if ($this->db->trans_status() === FALSE) {
             echo json_encode(array('success' => false, 'message' => 'Db Error Occured'));
             return;
         }
-        echo json_encode(array('success' => true, 'message' => 'Sub Category Add Successflly!'));
+        echo json_encode(array('success' => true, 'message' => 'Sub Category Add Successflly!', 'sub_category_data' => $sub_category_data));
     }
 
     /**
@@ -63,12 +63,13 @@ class Sub_category extends CI_Controller {
         }
         $this->db->trans_start();
         $this->sub_category_model->update($sub_category_id, $sub_category_data);
+        $sub_category_data['sub_category_id'] = $sub_category_id;
         $this->db->trans_complete();
         if ($this->db->trans_status() === FALSE) {
             echo json_encode(array('success' => FALSE, 'message' => 'Some unexpected database error encountered due to which your transaction could not be completed'));
             return;
         }
-        echo json_encode(array('success' => TRUE, 'message' => 'Sub Category Update Successflly!'));
+        echo json_encode(array('success' => TRUE, 'message' => 'Sub Category Update Successflly!', 'sub_category_data' => $sub_category_data));
     }
 
     function _get_sub_category_data_from_post() {

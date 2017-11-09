@@ -119,6 +119,12 @@
             var spinnerTemplate = Handlebars.compile($("#spinner_template").html());
             var iconTemplate = Handlebars.compile($("#icon_template").html());
             var baseUrl = '<?php echo $base_url; ?>';
+            //globel arry
+            var eventOrganizedForArray = <?php echo json_encode($this->config->item('event_organized_for_array')); ?>;
+            var eventTypeArray = <?php echo json_encode($this->config->item('event_type_array')); ?>;
+            var categoryData =<?php echo json_encode($category); ?>;
+            var subCategoryData =<?php echo json_encode($sub_category); ?>;
+
             $(document).ajaxComplete(function () {
                 $('[data-toggle="tooltip"]').tooltip();
             });

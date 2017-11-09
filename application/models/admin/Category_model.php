@@ -32,6 +32,11 @@ class Category_model extends CI_Model {
         $this->db->delete('category');
     }
 
+    /**
+     * this function update the category data
+     * @param type $category_id
+     * @param type $category_data
+     */
     function update($category_id, $category_data) {
         $category_data['updated_time'] = date('Y-m-d H:i:s');
         $category_data['updated_by'] = get_from_session('user_id');

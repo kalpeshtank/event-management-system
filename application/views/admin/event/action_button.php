@@ -1,9 +1,9 @@
 <div>
-    <button type="button" class="btn btn-xs btn-primary btn-font" id="edit_category_btn_{{category_id}}" onclick="Category.listview.editCategory('{{category_id}}')">
+    <button type="button" class="btn btn-xs btn-primary btn-font" id="edit_event_btn_{{event_id}}" onclick="EventCreate.listview.editEvent('{{event_id}}')">
         <label class="fa fa-pencil label-btn-icon"></label>
         &nbsp;<label class="label-btn-fonts hidden-xs hidden-sm">Edit</label>
     </button>                    
-    <button type="button" class="btn btn-xs btn-primary btn-font" id="delete_category_btn_{{category_id}}" onclick="Category.listview.deleteCategory('{{category_id}}')">
+    <button type="button" class="btn btn-xs btn-primary btn-font" id="delete_event_btn_{{event_id}}" onclick="EventCreate.listview.deleteEvent('{{event_id}}')">
         <label class="fa fa-trash label-btn-icon"></label>
         &nbsp;<label class="label-btn-fonts hidden-xs hidden-sm">Delete</label>
     </button>                    

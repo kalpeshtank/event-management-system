@@ -1,6 +1,7 @@
 var eventListTemplate = Handlebars.compile($('#event_list_template').html());
 var eventFormTemplate = Handlebars.compile($('#event_form_template').html());
 var eventTableTemplate = Handlebars.compile($('#event_table_template').html());
+var eventActionButtonTemplate = Handlebars.compile($('#event_action_button_template').html());
 var EventCreate = {
     run: function () {
         this.router = new this.Router();
@@ -24,24 +25,24 @@ EventCreate.listView = Backbone.View.extend({
     },
     listPage: function () {
         this.$el.html(eventListTemplate);
-//        $('#event_data_table').html(eventTableTemplate);
-//        this.loadEventTable();
+        $('#event_data_table').html(eventTableTemplate);
+        this.loadEventTable();
     },
     loadEventTable: function () {
         var eventActionRenderer = function (data, type, full, meta) {
-            return eventActionButtonsTemplate({"category_id": data});
+            return eventActionButtonTemplate({"event_id": data});
         };
-        categoryDataTable = $('#category_table').DataTable({
-            ajax: {url: 'admin/category/get_category', dataSrc: "", type: "post"},
+        eventsDataTable = $('#event_table').DataTable({
+            ajax: {url: 'admin/events/get_events_data', dataSrc: "", type: "post"},
             bAutoWidth: false,
             ordering: false,
             columns: [
-                {data: 'category_name'},
-                {data: 'category_description'},
+                {data: 'event_name'},
+                {data: 'event_description'},
                 {
                     "className": '',
                     "orderable": false,
-                    "data": 'category_id',
+                    "data": 'event_id',
                     "render": eventActionRenderer
                 }
             ]
@@ -50,6 +51,10 @@ EventCreate.listView = Backbone.View.extend({
     newEvent: function () {
         $('#event_form_div').html(eventFormTemplate);
         $('#update_event_btn').hide();
+        renderOptionsForTwoDimensionalArrayForRates(eventOrganizedForArray, 'organized_for');
+        renderOptionsForTwoDimensionalArrayForRates(eventTypeArray, 'event_type');
+        renderOptionsForTwoDimensionalArrayWithKeyValue(categoryData, 'category_id', 'category_id', 'category_name');
+        renderOptionsForTwoDimensionalArrayWithKeyValue(subCategoryData, 'sub_category_id', 'sub_category_id', 'sub_category_name');
         $('.select2').select2({"allowClear": true});
         datePicker();
         $(".timepicker").timepicker({showInputs: true});
@@ -135,32 +140,32 @@ EventCreate.listView = Backbone.View.extend({
             data: eventFormData,
             success: function (data) {
                 var parseData = JSON.parse(data);
-                $('#spinner_category_btn').html('');
-                $('#spinner_category_btn').hide();
+                $('#spinner_event_btn').html('');
+                $('#spinner_event_btn').hide();
                 if (url == 'create') {
-                    $('#save_category_btn').show();
+                    $('#save_event_btn').show();
                 } else if (url == 'update') {
-                    $('#update_category_btn').show();
+                    $('#update_event_btn').show();
                 }
                 if (parseData.success == false) {
                     showError(parseData.message);
                     return false;
                 }
                 showSuccess(parseData.message);
-                categoryDataTable.ajax.reload();
-                that.newCategory();
+                eventsDataTable.ajax.reload();
+                that.newEvent();
             }
         });
     },
-    deleteEvent: function (categoryId) {
+    deleteEvent: function (eventId) {
         getConfirm(function (result) {
             if (result === false) {
                 return false;
             }
             $.ajax({
                 type: 'POST',
-                url: "admin/category/delete_category",
-                data: {"category_id": categoryId},
+                url: "admin/events/delete_event",
+                data: {"event_id": eventId},
                 success: function (data) {
                     var parseData = JSON.parse(data);
                     if (parseData.success == false) {
@@ -168,7 +173,7 @@ EventCreate.listView = Backbone.View.extend({
                         return false;
                     }
                     showSuccess(parseData.message);
-                    categoryDataTable.ajax.reload();
+                    eventsDataTable.ajax.reload();
                 }
             });
         });

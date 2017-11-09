@@ -123,7 +123,43 @@ function changeTimeFormat(oldTime) {
     return newTime;
 }
 
+function renderOptionsForTwoDimensionalArrayForRates(dataArray, comboId) {
+    if (!dataArray) {
+        return false;
+    }
+    $('#' + comboId).html('<option value="">&nbsp;</option>');
+    var data = {};
+    var optionResult = "";
+    $.each(dataArray, function (index, dataObject) {
+        data = {"value_field": index, 'text_field': dataObject};
+        optionResult = optionTemplate(data);
+        $("#" + comboId).append(optionResult);
+    });
+}
 
-
-
+/**
+ * This Function Is Used To Create Dynamic Combo Box Pass Data And KeyId And Value Id And combo Id
+ * @param {type} dataArray
+ * @param {type} comboId
+ * @param {type} keyId
+ * @param {type} valueId
+ * @returns {Boolean}
+ */
+function renderOptionsForTwoDimensionalArrayWithKeyValue(dataArray, comboId, keyId, valueId) {
+    if (!dataArray) {
+        return false;
+    }
+    $('#' + comboId).html('<option value="">&nbsp;</option>');
+    var data = {};
+    var optionResult = "";
+    var textField = "";
+    $.each(dataArray, function (index, dataObject) {
+        if (dataObject != undefined) {
+            textField = dataObject[valueId];
+            data = {"value_field": dataObject[keyId], 'text_field': textField};
+            optionResult = optionTemplate(data);
+            $("#" + comboId).append(optionResult);
+        }
+    });
+}
 
