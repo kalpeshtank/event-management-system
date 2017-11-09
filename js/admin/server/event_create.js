@@ -50,12 +50,17 @@ EventCreate.listView = Backbone.View.extend({
     newEvent: function () {
         $('#event_form_div').html(eventFormTemplate);
         $('#update_event_btn').hide();
+        $('.select2').select2({"allowClear": true});
+        datePicker();
+        $(".timepicker").timepicker({
+            showInputs: true
+        });
     },
     saveEvent: function () {
         var that = this;
         var eventFormData = $('#event_form').serializeFormJSON();
         console.log(eventFormData);
-        return ;
+        return;
         if (eventFormData.category_name == '') {
             showError('Please Enter Category Name');
             $('#category_name').focus();
@@ -120,7 +125,7 @@ EventCreate.listView = Backbone.View.extend({
             });
         });
     },
-    editCategory: function (categoryId) {
+    editEvent: function (categoryId) {
         var that = this;
         $.ajax({
             type: 'POST',

@@ -38,6 +38,8 @@
         <link rel="stylesheet" href="<?php echo $base_url; ?>js/admin/plugins/datatables/buttons.dataTables.min.css">
         <link rel="stylesheet" href="<?php echo $base_url; ?>css/admin/style.css">
         <link rel="stylesheet" href="<?php echo $base_url; ?>js/admin/plugins/datetimepicker/bootstrap-datetimepicker.css">
+        <!-- Bootstrap time Picker -->
+        <link rel="stylesheet" href="<?php echo $base_url; ?>js/admin/plugins/timepicker/bootstrap-timepicker.min.css">
         <!--spinner.css-->
         <link rel="stylesheet" href="<?php echo $base_url; ?>css/admin/spinner.css">
         <!-- footer-->
@@ -84,7 +86,8 @@
         <script src="<?php echo $base_url; ?>js/admin/ace/elements.spinner.js" type="text/javascript"></script>
         <script src="<?php echo $base_url; ?>js/admin/plugins/datetimepicker/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
         <script type="text/javascript" src="<?php echo base_url() ?>js/utility.js"></script>
-
+        <!-- bootstrap time picker -->
+        <script src="<?php echo $base_url; ?>js/admin/plugins/timepicker/bootstrap-timepicker.min.js"></script>
         <!--------------------------- Template definitions start ------------------------------------------------>
         <script id="option_template" type="text/x-handlebars-template">
             <option value="{{value_field}}">{{text_field}}</option>

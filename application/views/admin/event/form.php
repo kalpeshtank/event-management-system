@@ -8,43 +8,111 @@
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-md-2 control-label">Category:</label>
+            <label class="col-md-2 control-label">Category :</label>
             <div class="col-md-8">
                 <select name="category" id="category" class="form-control select2" data-placeholder="Select Category">
+                    <option value="0">Select</option>
                 </select>
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-md-2 control-label">Sub-Category:</label>
+            <label class="col-md-2 control-label">Sub-Category :</label>
             <div class="col-md-8">
                 <select name="sub_category" id="sub_category" class="form-control select2" data-placeholder="Select Sub-Category">
+                    <option value="0">Select</option>
+                </select>
+            </div>
+        </div> 
+        <div class="form-group row">
+            <label class="col-md-2 control-label">Organized-For :</label>
+            <div class="col-md-8">
+                <select name="organized_for" id="organized_for" class="form-control select2" data-placeholder="Select..">
+                    <option value="0">Select</option>
                 </select>
             </div>
         </div>
         <div class="form-group row">
-            <div>
-                <label class="radio">
-                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                    Option one is this and that—be sure to include why it's great
-                </label>
+            <label class="col-md-2 control-label">Event-Type :</label>
+            <div class="col-md-8">
+                <select name="event_type" id="event_type" class="form-control select2" data-placeholder="Select..">
+                    <option value="0">Select</option>
+                </select>
             </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                    Option two can be something else and selecting it will deselect option one
-                </label>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 control-label">Event-Place :</label>
+            <div class="col-md-8">
+                <input type="text" name="event_place" id="event_place" class="form-control" placeholder="Event Place"  value="{{event_data.event_description}}">
             </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled="">
-                    Option three is disabled
-                </label>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 control-label">Event Start Date :</label>
+            <div class="input-group date date_picker col-md-8">
+                <input  type="text" name="event_start_date" id="event_start_date" class="form-control" data-date-format="DD-MM-YYYY" placeholder="dd-mm-yyyy">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 control-label">Event End Date :</label>
+            <div class="input-group date date_picker col-md-8">
+                <input  type="text" name="event_end_date" id="event_end_date" class="form-control" data-date-format="DD-MM-YYYY" placeholder="dd-mm-yyyy">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 control-label">Event Start Time :</label>
+            <div class="col-md-8">
+                <div class="input-group bootstrap-timepicker">
+                    <input type="text" id="event_start_time" name="event_start_time" class="form-control timepicker">
+                    <div class="input-group-addon">
+                        <i class="fa fa-clock-o"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 control-label">Event End Time :</label>
+            <div class="col-md-8">
+                <div class="input-group bootstrap-timepicker">
+                    <input type="text" id="event_end_time" name="event_end_time" class="form-control timepicker">
+                    <div class="input-group-addon">
+                        <i class="fa fa-clock-o"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 control-label">Registration Start Date :</label>
+            <div class="input-group date date_picker col-md-8">
+                <input  type="text" name="registration_start_date" id="registration_start_date" class="form-control" data-date-format="DD-MM-YYYY" placeholder="dd-mm-yyyy">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 control-label">Registration End Date :</label>
+            <div class="input-group date date_picker col-md-8">
+                <input  type="text" name="registration_end_date" id="registration_end_date" class="form-control" data-date-format="DD-MM-YYYY" placeholder="dd-mm-yyyy">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
             </div>
         </div>
         <div class="form-group row">
             <label class="col-md-2 control-label">Event Description :</label>
             <div class="col-md-8">
                 <input type="text" name="event_description" id="event_description" class="form-control" placeholder="Event Description"  value="{{event_data.event_description}}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 control-label">Event Photo :</label>
+            <div class="col-md-8">
+                <input type="file" id="event_photo" name="event_photo" class="form-control">
             </div>
         </div>
     </div>
