@@ -6,8 +6,10 @@ class Events extends CI_Controller {
         parent::__construct();
     }
 
-    function insert_events() {
-        
+    function create_events() {
+        $event_data = $this->_get_event_data_from_post();
+        print_r($_POST);
+        exit;
     }
 
     function _get_event_data_from_post() {

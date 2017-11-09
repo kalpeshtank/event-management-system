@@ -1,4 +1,4 @@
-<form role="form" method="post" name="event_form" id="event_form">
+<form role="form" method="post" name="event_form" id="event_form" enctype="multipart/form-data">
     <input type="hidden" name="event_id" id="event_id" class="form-control" value="{{event_data.event_id}}">
     <div class="box-body with-border">
         <!--<div class="col-md-6">-->
@@ -11,15 +11,15 @@
         <div class="form-group row col-md-6">
             <label class="col-md-5 control-label">Category :</label>
             <div class="col-md-7">
-                <select name="category" id="category" tabindex="2" class="form-control select2" data-placeholder="Select Category" style="width: 100%;">
-                    <option value="0">Select</option>
+                <select name="category_id" id="category_id" tabindex="2" class="form-control select2" data-placeholder="Select Category" style="width: 100%;">
+                    <option value=""></option>
                 </select>
             </div>
         </div>
         <div class="form-group row col-md-6">
             <label class="col-md-5 control-label">Sub-Category :</label>
             <div class="col-md-7">
-                <select name="sub_category" id="sub_category" tabindex="3" class="form-control select2" data-placeholder="Select Sub-Category" style="width: 100%;">
+                <select name="sub_category_id" id="sub_category_id" tabindex="3" class="form-control select2" data-placeholder="Select Sub-Category" style="width: 100%;">
                     <option value="0">Select</option>
                 </select>
             </div>

@@ -52,38 +52,86 @@ EventCreate.listView = Backbone.View.extend({
         $('#update_event_btn').hide();
         $('.select2').select2({"allowClear": true});
         datePicker();
-        $(".timepicker").timepicker({
-            showInputs: true
-        });
+        $(".timepicker").timepicker({showInputs: true});
     },
     saveEvent: function () {
         var that = this;
         var eventFormData = $('#event_form').serializeFormJSON();
-        console.log(eventFormData);
-        return;
-        if (eventFormData.category_name == '') {
-            showError('Please Enter Category Name');
-            $('#category_name').focus();
+        eventFormData.event_end_time = changeTimeFormat(eventFormData.event_start_time);
+        eventFormData.event_start_time = changeTimeFormat(eventFormData.event_start_time);
+        if (eventFormData.event_name == '') {
+            showError('Please Enter Event Name');
+            $('#event_name').focus();
             return false;
         }
-        if (eventFormData.category_description == '') {
-            showError('Please Enter Category Description');
-            $('#category_description').focus();
-            return false;
-        }
-        $('#spinner_category_btn').html(spinnerTemplate);
-        $('#spinner_category_btn').show();
-        $('#save_category_btn').hide();
-        $('#update_category_btn').hide();
-        var url;
         if (eventFormData.category_id == '') {
+            showError('Please Select Category');
+            $('#category_id').focus();
+            return false;
+        }
+        if (eventFormData.sub_category_id == '') {
+            showError('Please Select Sub-Category');
+            $('#sub_category_id').focus();
+            return false;
+        }
+        if (eventFormData.organized_for == '') {
+            showError('Please Select Organized For');
+            $('#organized_for').focus();
+            return false;
+        }
+        if (eventFormData.event_type == '') {
+            showError('Please Select Event Type');
+            $('#event_type').focus();
+            return false;
+        }
+        if (eventFormData.event_place == '') {
+            showError('Please Enter  Event Place');
+            $('#event_place').focus();
+            return false;
+        }
+        if (eventFormData.event_start_date == '') {
+            showError('Please Enter Event Start Date');
+            $('#event_start_date').focus();
+            return false;
+        }
+        if (eventFormData.event_start_time == '') {
+            showError('Please Enter Event Start Time');
+            $('#event_start_time').focus();
+            return false;
+        }
+        if (eventFormData.event_end_date == '') {
+            showError('Please Enter Event End Date');
+            $('#event_end_date').focus();
+            return false;
+        }
+        if (eventFormData.event_end_time == '') {
+            showError('Please Enter Event End Time');
+            $('#event_end_time').focus();
+            return false;
+        }
+        if (eventFormData.registration_start_date == '') {
+            showError('Please Enter Registration Start Date');
+            $('#registration_start_date').focus();
+            return false;
+        }
+        if (eventFormData.registration_end_date == '') {
+            showError('Please Enter Registration End Date');
+            $('#registration_end_date').focus();
+            return false;
+        }
+        $('#spinner_event_btn').html(spinnerTemplate);
+        $('#spinner_event_btn').show();
+        $('#save_event_btn').hide();
+        $('#update_event_btn').hide();
+        var url;
+        if (eventFormData.event_id == '') {
             url = 'create';
         } else {
             url = 'update';
         }
         $.ajax({
             type: 'POST',
-            url: "admin/category/" + url + '_category',
+            url: "admin/events/" + url + '_events',
             data: eventFormData,
             success: function (data) {
                 var parseData = JSON.parse(data);

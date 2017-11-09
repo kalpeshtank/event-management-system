@@ -69,6 +69,59 @@ function getConfirm(callback) {
             callback(true);
     });
 }
+/**
+ * convert 24 hours to 12 hours with am pm
+ * @param {type} time_format
+ * @returns {unresolved}
+ */
+function convert24To12Hours(time_format) {
+    var timeData = time_format.split(':');
+    var hh = timeData[0];
+    var m = timeData[1];
+    var time = hh + ':' + m;
+    // Check correct time format and split into components
+    time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+    if (time.length > 1) { // If time format correct
+        time = time.slice(1); // Remove full string match value
+        time[5] = +time[0] < 12 ? 'AM' : 'PM'; // Set AM/PM
+        time[0] = +time[0] % 12 || 12; // Adjust hours
+    }
+    return time.join(''); // return adjusted time or original string
+}
+/**
+ * 12 hours to 24 hours time format
+ * @param {type} date
+ * @returns {changeDateFormatForSchedule.dateData}
+ */
+function changeTimeFormat(oldTime) {
+    var newTime;
+    if (oldTime.indexOf('PM') > -1) {
+        var time = oldTime.replace('PM', '');
+        var timeArray = time.split(':');
+        if (Number(timeArray[0]) >= 12) {
+            timeArray[0] = Number(timeArray[0]) - 12;
+        }
+        var addition = Number(timeArray[0]) + Number(12);
+        newTime = addition + ":" + timeArray[1] + ":00";
+    } else if (oldTime.indexOf('AM') > -1) {
+        newTime = oldTime;
+        if (newTime == '12:00AM') {
+            newTime = '00:00:00';
+        } else if (newTime == '12:30AM') {
+            newTime = '00:30:00';
+        } else {
+            var amTime = newTime.replace('AM', '');
+            var amTimeArray = amTime.split(':');
+            if (Number(amTimeArray[0]) < 10) {
+                amTimeArray[0] = "0" + amTimeArray[0];
+            }
+            newTime = amTimeArray[0] + ":" + amTimeArray[1] + ":00";
+        }
+    } else {
+        return '00:00:00';
+    }
+    return newTime;
+}
 
 
 
