@@ -17,6 +17,8 @@ CREATE TABLE `category` (
   PRIMARY KEY (`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `category` (`category_id`, `category_name`, `category_description`, `created_by`, `created_time`, `updated_by`, `updated_time`) VALUES
+(1,	'fdsf',	'fsdf',	1,	'2017-11-10 09:55:01',	0,	'0000-00-00 00:00:00');
 
 DROP TABLE IF EXISTS `events`;
 CREATE TABLE `events` (
@@ -31,11 +33,11 @@ CREATE TABLE `events` (
   `event_end_date` date NOT NULL,
   `event_start_time` time NOT NULL,
   `event_end_time` time NOT NULL,
-  `event_description` text NOT NULL,
   `registration_start_date` date NOT NULL,
-  `registration_end_date` date NOT NULL,
-  `event_photo` varchar(200) NOT NULL,
   `created_by` bigint(20) NOT NULL,
+  `is_active` tinyint(4) NOT NULL,
+  `registration_end_date` date NOT NULL,
+  `event_description` text NOT NULL,
   `created_time` datetime NOT NULL,
   `updated_by` bigint(20) NOT NULL,
   `updated_time` datetime NOT NULL,
@@ -65,6 +67,8 @@ CREATE TABLE `user` (
   `password` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL,
   `remarks` text NOT NULL,
+  `user_type` tinyint(4) NOT NULL,
+  `is_active` tinyint(4) NOT NULL,
   `created_by` bigint(20) NOT NULL,
   `created_time` datetime NOT NULL,
   `updated_by` bigint(20) NOT NULL,
@@ -72,7 +76,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `user` (`user_id`, `username`, `password`, `name`, `remarks`, `created_by`, `created_time`, `updated_by`, `updated_time`) VALUES
-(1,	'k@gmail.com',	'fe01ce2a7fbac8fafaed7c982a04e229',	'kalpesh',	'',	0,	'2017-08-17 05:49:49',	1,	'2017-11-04 18:48:22');
+INSERT INTO `user` (`user_id`, `username`, `password`, `name`, `remarks`, `user_type`, `is_active`, `created_by`, `created_time`, `updated_by`, `updated_time`) VALUES
+(1,	'k@gmail.com',	'fe01ce2a7fbac8fafaed7c982a04e229',	'kalpesh',	'',	0,	0,	0,	'2017-08-17 05:49:49',	1,	'2017-11-04 18:48:22');
 
--- 2017-11-08 11:55:03
+-- 2017-11-11 09:26:45
