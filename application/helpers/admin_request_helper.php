@@ -54,5 +54,15 @@ function get_from_post($key, $trim = TRUE) {
 }
 
 /**
+ * check the login user is super admin or admin
+ * @return type
+ */
+function is_super_admin() {
+    $CI = & get_instance();
+    $user_type = $CI->session->userdata('user_type');
+    return $user_type == SUPER_ADMIN;
+}
+
+/**
  * EOF: ./application/helpers/request_helper.php
  */

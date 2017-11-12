@@ -22,3 +22,22 @@ $config['event_type_array'] = array(
     MALE => 'Single player',
     TEAM => 'Team'
 );
+/**
+ * user type array
+ */
+define('SUPER_ADMIN', 1);
+define('ADMIN', 2);
+$config['user_type_array'] = array(
+    SUPER_ADMIN => 'Super Admin',
+    ADMIN => 'Admin'
+);
+/**
+ * user Status
+ */
+define('IS_ACTIVE_YES', 1);
+define('IS_ACTIVE_NO', 2);
+
+$config['status_array'] = array(
+    IS_ACTIVE_YES => 'Active',
+    IS_ACTIVE_NO => 'Processing'
+);

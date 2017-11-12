@@ -3,12 +3,25 @@
 class Login_model extends CI_Model {
 
     /**
+     * get all user data
+     * @return type
+     */
+    function get_all_user_data() {
+        $this->db->select('*');
+        $this->db->where_not_in('user_type', SUPER_ADMIN);
+        $this->db->from('user');
+        $recs = $this->db->get();
+        return $recs->result_array();
+    }
+
+    /**
      * get userdata by username
      * @param type $username
      * @return type
      */
     function get_by_username($username) {
         $this->db->where('username', $username);
+        $this->db->where('is_active', IS_ACTIVE_YES);
         $recs = $this->db->get('user');
         return $recs->row_array();
     }
@@ -28,21 +41,6 @@ class Login_model extends CI_Model {
 
     function insert_signup_data($signup_data) {
         $this->db->insert('user', $signup_data);
-        return $this->db->insert_id();
-    }
-
-    function insert_subscription_data($subscription_data) {
-        $this->db->insert('subscription', $subscription_data);
-        return $this->db->insert_id();
-    }
-
-    function insert_subscription_account_data($subscription_account_data) {
-        $this->db->insert('subscriber_account', $subscription_account_data);
-        return $this->db->insert_id();
-    }
-
-    function insert_subscription_account_user_data($subscription_account_user_data) {
-        $this->db->insert('subscriber_account_users', $subscription_account_user_data);
         return $this->db->insert_id();
     }
 

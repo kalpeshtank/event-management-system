@@ -40,7 +40,7 @@ class Login extends CI_Controller {
         }
         $user = $this->login_model->get_by_username($username);
         if (!$user) {
-            $this->index('Invalid Username');
+            $this->index('User Is Not Active Waiting for Admin Approval');
             return;
         }
         if (md5($password) != $user['password']) {

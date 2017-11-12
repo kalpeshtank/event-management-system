@@ -104,8 +104,10 @@
                             showError(parseData.message);
                             return false;
                         }
-                        window.location = '<?php echo base_url() . "admin/login" ?>';
-                        showSuccess('You have Succesfully Registered');
+                        showSuccess('You have Succesfully Registered Waiting for Admin Approval');
+                        $('#user_name').val('');
+                        $('#user_email').val('');
+                        $('#user_password').val('');
                     }
                 });
             }

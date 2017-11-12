@@ -86,6 +86,7 @@
         <script src="<?php echo $base_url; ?>js/admin/ace/elements.spinner.js" type="text/javascript"></script>
         <script src="<?php echo $base_url; ?>js/admin/plugins/datetimepicker/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
         <script type="text/javascript" src="<?php echo base_url() ?>js/utility.js"></script>
+        <script type="text/javascript" src="<?php echo base_url() ?>js/dateutil.js"></script>
         <!-- bootstrap time picker -->
         <script src="<?php echo $base_url; ?>js/admin/plugins/timepicker/bootstrap-timepicker.min.js"></script>
         <!--------------------------- Template definitions start ------------------------------------------------>
@@ -122,8 +123,12 @@
             //globel arry
             var eventOrganizedForArray = <?php echo json_encode($this->config->item('event_organized_for_array')); ?>;
             var eventTypeArray = <?php echo json_encode($this->config->item('event_type_array')); ?>;
+            var userTypeArray = <?php echo json_encode($this->config->item('user_type_array')); ?>;
+            var statusArray = <?php echo json_encode($this->config->item('status_array')); ?>;
             var categoryData =<?php echo json_encode($category); ?>;
             var subCategoryData =<?php echo json_encode($sub_category); ?>;
+            var IS_ACTIVE_YES =<?php echo IS_ACTIVE_YES ?>;
+            var IS_ACTIVE_NO =<?php echo IS_ACTIVE_NO ?>;
 
             $(document).ajaxComplete(function () {
                 $('[data-toggle="tooltip"]').tooltip();

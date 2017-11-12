@@ -14,6 +14,12 @@ class Signup extends CI_Controller {
         $this->load->view('admin/signup');
     }
 
+    function get_all_user() {
+        $user_id = get_from_session('user_id');
+        $user_data = $this->login_model->get_all_user_data($user_id);
+        echo json_encode($user_data);
+    }
+
     function create() {
         $signup_data = $this->_get_user_data();
         $this->load->library('form_validation');
@@ -36,6 +42,8 @@ class Signup extends CI_Controller {
             'username' => $this->input->post('user_email'),
             'password' => md5($this->input->post('user_password')),
             'name' => $this->input->post('user_name'),
+            'user_type' => ADMIN,
+            'is_active' => IS_ACTIVE_NO,
             'created_by' => 0,
             'created_time' => date('Y-m-d H:i:s')
         );

@@ -39,7 +39,7 @@
         <div class="form-group row col-md-6">
             <label class="col-md-5 control-label">Event-Place :</label>
             <div class="col-md-7">
-                <input type="text" name="event_place" id="event_place" tabindex="6" class="form-control" placeholder="Event Place"  value="{{event_data.event_description}}">
+                <input type="text" name="event_place" id="event_place" tabindex="6" class="form-control" placeholder="Event Place"  value="{{event_data.event_place}}">
             </div>
         </div>
         <div class="form-group row col-md-6">

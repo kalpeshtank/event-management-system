@@ -62,8 +62,8 @@ EventCreate.listView = Backbone.View.extend({
     saveEvent: function () {
         var that = this;
         var eventFormData = $('#event_form').serializeFormJSON();
-        eventFormData.event_end_time = changeTimeFormat(eventFormData.event_start_time);
         eventFormData.event_start_time = changeTimeFormat(eventFormData.event_start_time);
+        eventFormData.event_end_time = changeTimeFormat(eventFormData.event_end_time);
         if (eventFormData.event_name == '') {
             showError('Please Enter Event Name');
             $('#event_name').focus();
@@ -178,16 +178,36 @@ EventCreate.listView = Backbone.View.extend({
             });
         });
     },
-    editEvent: function (categoryId) {
+    editEvent: function (eventId) {
         var that = this;
         $.ajax({
             type: 'POST',
-            url: "admin/category/get_category_by_id",
-            data: {"category_id": categoryId},
+            url: "admin/events/get_event_by_id",
+            data: {"event_id": eventId},
             success: function (data) {
                 var parseData = JSON.parse(data);
-                $('#category_form_div').html(categoryFormTemplate({"category_data": parseData.category_data}));
-                $('#save_category_btn').hide();
+                var eventsData = parseData.events_data;
+                $('#event_form_div').html(eventFormTemplate({"event_data": eventsData}));
+                $('#save_event_btn').hide();
+                renderOptionsForTwoDimensionalArrayForRates(eventOrganizedForArray, 'organized_for');
+                renderOptionsForTwoDimensionalArrayForRates(eventTypeArray, 'event_type');
+                renderOptionsForTwoDimensionalArrayWithKeyValue(categoryData, 'category_id', 'category_id', 'category_name');
+                renderOptionsForTwoDimensionalArrayWithKeyValue(subCategoryData, 'sub_category_id', 'sub_category_id', 'sub_category_name');
+                $('#category_id').val(eventsData.category_id);
+                $('#sub_category_id').val(eventsData.sub_category_id);
+                $('#organized_for').val(eventsData.event_organized_for);
+                $('#event_type').val(eventsData.event_type);
+                $('.select2').select2({"allowClear": true});
+                datePicker();
+                $(".timepicker").timepicker({showInputs: true});
+
+                $('#event_start_date').val(dateTo_DD_MM_YYYY(yyyymmddToDate(eventsData.event_start_date)));
+                $('#event_end_date').val(dateTo_DD_MM_YYYY(yyyymmddToDate(eventsData.event_end_date)));
+                $('#registration_start_date').val(dateTo_DD_MM_YYYY(yyyymmddToDate(eventsData.registration_start_date)));
+                $('#registration_end_date').val(dateTo_DD_MM_YYYY(yyyymmddToDate(eventsData.registration_end_date)));
+
+                $('#event_start_time').val(convert24To12Hours(eventsData.event_start_time));
+                $('#event_end_time').val(convert24To12Hours(eventsData.event_end_time));
             }
         });
     }

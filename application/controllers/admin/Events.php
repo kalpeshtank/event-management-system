@@ -43,6 +43,31 @@ class Events extends CI_Controller {
         echo json_encode(array('success' => true, 'message' => 'Event Add Successflly!'));
     }
 
+    /**
+     * update events record by event id 
+     */
+    function update_events() {
+        $event_data = $this->_get_event_data_from_post();
+        $event_id = get_from_post('event_id');
+        $validation_massage = $this->_check_event_validation($event_data);
+        if ($validation_massage) {
+            echo json_encode(array('success' => FALSE, 'message' => $validation_massage));
+            return;
+        }
+        if ($this->_check_event_exists($event_data)) {
+            echo json_encode(array('success' => false, 'message' => 'Category Exists'));
+            return;
+        }
+        $this->db->trans_start();
+        $this->events_model->update($event_id, $event_data);
+        $this->db->trans_complete();
+        if ($this->db->trans_status() === FALSE) {
+            echo json_encode(array('success' => FALSE, 'message' => 'Some unexpected database error encountered due to which your transaction could not be completed'));
+            return;
+        }
+        echo json_encode(array('success' => TRUE, 'message' => 'Event Update Successflly!'));
+    }
+
     function _get_event_data_from_post() {
         $event_data = array(
             "event_name" => $this->input->post('event_name'),
@@ -134,6 +159,15 @@ class Events extends CI_Controller {
             return;
         }
         echo json_encode(array('success' => true, 'message' => 'Event Deleted Successflly!'));
+    }
+
+    /**
+     * get events record for edit bu events id
+     */
+    function get_event_by_id() {
+        $event_id = get_from_post('event_id');
+        $events_data = $this->events_model->get_event_by_id($event_id);
+        echo json_encode(array('events_data' => $events_data));
     }
 
 }

@@ -24,6 +24,18 @@ class Events_model extends CI_Model {
     }
 
     /**
+     * this function update the Events data
+     * @param type $event_id
+     * @param type $events_data
+     */
+    function update($event_id, $events_data) {
+        $events_data['updated_time'] = date('Y-m-d H:i:s');
+        $events_data['updated_by'] = get_from_session('user_id');
+        $this->db->where('event_id', $event_id);
+        $this->db->update('events', $events_data);
+    }
+
+    /**
      * get event info by event data
      * @param type $event_data
      * @param type $
@@ -56,6 +68,19 @@ class Events_model extends CI_Model {
     function delete($event_id) {
         $this->db->where('event_id', $event_id);
         $this->db->delete('events');
+    }
+
+    /**
+     *  
+     * get events data for edit by events id
+     * @param type $event_id
+     * @return type
+     */
+    function get_event_by_id($event_id) {
+        $this->db->select('*');
+        $this->db->where('event_id', $event_id);
+        $this->db->from('events');
+        return $this->db->get()->row_array();
     }
 
 }

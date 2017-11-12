@@ -23,6 +23,13 @@
                     <li><a href="admin#sub_category/list"><i class="fa fa-circle-o"></i> Sub-Category</a></li>
                 </ul>
             </li>
+            <?php if (is_super_admin()) { ?>
+                <li>
+                    <a href="admin#user/list">
+                        <i class="fa fa-user"></i> <span>User</span>
+                    </a>
+                </li>
+            <?php } ?>
         </ul>
     </section>
     <!-- /.sidebar -->
