@@ -51,6 +51,15 @@ class Login_model extends CI_Model {
         return $resc->row_array();
     }
 
+    /**
+     * 
+     */
+    function update_status($user_id, $user_status) {
+        $this->db->where('user_id', $user_id);
+        $this->db->set('is_active', $user_status);
+        $this->db->update('user');
+    }
+
 }
 
 /*

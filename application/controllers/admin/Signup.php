@@ -49,6 +49,13 @@ class Signup extends CI_Controller {
         );
     }
 
+    function active_diactive_user() {
+        $user_id = $this->input->post('user_id');
+        $user_status = $this->input->post('user_status');
+        $this->login_model->update_status($user_id, $user_status);
+        echo json_encode(array('success' => true));
+    }
+
 }
 
 /*

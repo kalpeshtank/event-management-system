@@ -129,6 +129,8 @@
             var subCategoryData =<?php echo json_encode($sub_category); ?>;
             var IS_ACTIVE_YES =<?php echo IS_ACTIVE_YES ?>;
             var IS_ACTIVE_NO =<?php echo IS_ACTIVE_NO ?>;
+            var SUPER_ADMIN =<?php echo SUPER_ADMIN ?>;
+            var USER_TYPE =<?php echo get_from_session('user_type'); ?>;
 
             $(document).ajaxComplete(function () {
                 $('[data-toggle="tooltip"]').tooltip();
