@@ -11,6 +11,7 @@ var EventCreate = {
 
 EventCreate.Router = Backbone.Router.extend({
     routes: {
+        '': 'renderList',
         'event/list': 'renderList'
     },
     renderList: function () {
@@ -55,6 +56,7 @@ EventCreate.listView = Backbone.View.extend({
         renderOptionsForTwoDimensionalArrayForRates(eventTypeArray, 'event_type');
         renderOptionsForTwoDimensionalArrayWithKeyValue(categoryData, 'category_id', 'category_id', 'category_name');
         renderOptionsForTwoDimensionalArrayWithKeyValue(subCategoryData, 'sub_category_id', 'sub_category_id', 'sub_category_name');
+        renderOptionsForTwoDimensionalArrayWithKeyValue(userData, 'handle_by', 'user_id', 'name');
         $('.select2').select2({"allowClear": true});
         datePicker();
         $(".timepicker").timepicker({showInputs: true});
@@ -122,6 +124,11 @@ EventCreate.listView = Backbone.View.extend({
         if (eventFormData.registration_end_date == '') {
             showError('Please Enter Registration End Date');
             $('#registration_end_date').focus();
+            return false;
+        }
+        if (eventFormData.handle_by == '') {
+            showError('Please Select Handle By');
+            $('#handle_by').focus();
             return false;
         }
         $('#spinner_event_btn').html(spinnerTemplate);
@@ -193,10 +200,12 @@ EventCreate.listView = Backbone.View.extend({
                 renderOptionsForTwoDimensionalArrayForRates(eventTypeArray, 'event_type');
                 renderOptionsForTwoDimensionalArrayWithKeyValue(categoryData, 'category_id', 'category_id', 'category_name');
                 renderOptionsForTwoDimensionalArrayWithKeyValue(subCategoryData, 'sub_category_id', 'sub_category_id', 'sub_category_name');
+                renderOptionsForTwoDimensionalArrayWithKeyValue(userData, 'handle_by', 'user_id', 'name');
                 $('#category_id').val(eventsData.category_id);
                 $('#sub_category_id').val(eventsData.sub_category_id);
                 $('#organized_for').val(eventsData.event_organized_for);
                 $('#event_type').val(eventsData.event_type);
+                $('#handle_by').val(eventsData.handle_by);
                 $('.select2').select2({"allowClear": true});
                 datePicker();
                 $(".timepicker").timepicker({showInputs: true});

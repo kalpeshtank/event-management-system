@@ -1,4 +1,5 @@
 var userListTemplate = Handlebars.compile($('#user_list_template').html());
+var userFormTemplate = Handlebars.compile($('#user_form_template').html());
 var UserData = {
     run: function () {
         this.router = new this.Router();
@@ -15,6 +16,9 @@ UserData.Router = Backbone.Router.extend({
 });
 UserData.listView = Backbone.View.extend({
     el: 'div#main_container',
+    events: {
+        'click #save_user_btn': 'saveUser'
+    },
     listPage: function () {
         if (USER_TYPE != SUPER_ADMIN) {
             showError("You Can't Access");
@@ -22,6 +26,10 @@ UserData.listView = Backbone.View.extend({
             this.$el.html(userListTemplate);
             this.loadUserTable();
         }
+    },
+    newUser: function () {
+        $('#user_form_div').html(userFormTemplate);
+        $('#update_user_btn').hide();
     },
     loadUserTable: function () {
         var userActionRenderer = function (data, type, full, meta) {
@@ -59,6 +67,45 @@ UserData.listView = Backbone.View.extend({
             ]
         });
     },
+    saveUser: function () {
+        var userFormData = $('#registration_form').serializeFormJSON();
+        if (userFormData.user_name == "") {
+            showError('Please Enter Full Name');
+            $('#user_name').focus();
+            return false;
+        }
+        if (userFormData.user_email == "") {
+            showError('Please Enter Email Address');
+            $('#user_email').focus();
+            return false;
+        }
+        if (userFormData.user_password == "") {
+            showError('Please Enter Password');
+            $('#user_password').focus();
+            return false;
+        }
+        $.ajax({
+            type: 'POST',
+            url: "admin/signup/create",
+            data: userFormData,
+            error: function (textStatus, errorThrown) {
+                showError('Some unexpected database error encountered due to which your transaction could not be completed');
+            },
+            success: function (data) {
+                var parseData = JSON.parse(data);
+                if (parseData.success == false) {
+                    showError(parseData.message);
+                    return false;
+                }
+                showSuccess('You have Succesfully Created Admin User');
+                userData[parseData.user_data['user_id']] = parseData.user_data;
+                allUserDataTable.ajax.reload();
+                $('#user_name').val('');
+                $('#user_email').val('');
+                $('#user_password').val('');
+            }
+        });
+    },
     activeDeactiveUser: function (status, userId) {
         $.ajax({
             type: 'POST',
@@ -73,6 +120,7 @@ UserData.listView = Backbone.View.extend({
                 if (status == IS_ACTIVE_NO) {
                     showSuccess('User Deactive successfully');
                 } else if (status == IS_ACTIVE_YES) {
+                    userData[parseData.user_data['user_id']] = parseData.user_data;
                     showSuccess('User Active successfully');
                 }
                 allUserDataTable.ajax.reload();

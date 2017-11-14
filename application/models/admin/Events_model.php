@@ -7,9 +7,13 @@ class Events_model extends CI_Model {
      * @param type $username
      * @return type
      */
-    function get_all_event_data() {
+    function get_all_event_data($is_admin) {
         $this->db->select('*');
         $this->db->from('events');
+        if ($is_admin) {
+            $user_id = get_from_session('user_id');
+            $this->db->where('handle_by', $user_id);
+        }
         return $this->db->get()->result_array();
     }
 
@@ -43,6 +47,7 @@ class Events_model extends CI_Model {
      */
     function get_event_info($event_data) {
         $this->db->where('event_name', $event_data['event_name']);
+        $this->db->where('handle_by', $event_data['handle_by']);
         $this->db->where('category_id', $event_data['category_id']);
         $this->db->where('sub_category_id', $event_data['sub_category_id']);
         $this->db->where('event_organized_for', $event_data['event_organized_for']);

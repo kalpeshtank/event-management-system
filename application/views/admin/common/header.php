@@ -126,6 +126,7 @@
             var userTypeArray = <?php echo json_encode($this->config->item('user_type_array')); ?>;
             var statusArray = <?php echo json_encode($this->config->item('status_array')); ?>;
             var categoryData =<?php echo json_encode($category); ?>;
+            var userData =<?php echo json_encode($user_data); ?>;
             var subCategoryData =<?php echo json_encode($sub_category); ?>;
             var IS_ACTIVE_YES =<?php echo IS_ACTIVE_YES ?>;
             var IS_ACTIVE_NO =<?php echo IS_ACTIVE_NO ?>;

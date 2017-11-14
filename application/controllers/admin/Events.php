@@ -12,7 +12,11 @@ class Events extends CI_Controller {
      * get all events data for table view
      */
     function get_events_data() {
-        $events_data = $this->events_model->get_all_event_data();
+        $is_admin = TRUE;
+        if (is_super_admin()) {
+            $is_admin = FALSE;
+        }
+        $events_data = $this->events_model->get_all_event_data($is_admin);
         echo json_encode($events_data);
     }
 
@@ -81,6 +85,7 @@ class Events extends CI_Controller {
             "event_start_time" => $this->input->post('event_start_time'),
             "event_end_time" => $this->input->post('event_end_time'),
             "event_description" => $this->input->post('event_description'),
+            "handle_by" => $this->input->post('handle_by'),
             "registration_start_date" => to_database_format($this->input->post('registration_start_date')),
             "registration_end_date" => to_database_format($this->input->post('registration_end_date'))
         );
@@ -129,6 +134,9 @@ class Events extends CI_Controller {
         }
         if ($event_data['event_description'] == '') {
             return 'Please Enter Event Description';
+        }
+        if ($event_data['handle_by'] == '') {
+            return 'Please Select Handle By';
         }
         return '';
     }

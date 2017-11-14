@@ -11,7 +11,6 @@ var Category = {
 
 Category.Router = Backbone.Router.extend({
     routes: {
-        '': 'renderList',
         'category/list': 'renderList'
     },
     renderList: function () {

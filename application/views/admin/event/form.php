@@ -115,9 +115,16 @@
             </div>
         </div>
         <div class="form-group row col-md-6">
+            <label class="col-md-5 control-label">Handle By :</label>
+            <div class="col-md-7">
+                <select name="handle_by" id="handle_by" tabindex="14" class="form-control select2" data-placeholder="Select.." style="width: 100%;">
+                </select>
+            </div>
+        </div>
+        <div class="form-group row col-md-6">
             <label class="col-md-5 control-label">Event Photo :</label>
             <div class="col-md-7">
-                <input type="file" id="event_photo" tabindex="14" name="event_photo" class="form-control">
+                <input type="file" id="event_photo" tabindex="15" name="event_photo" class="form-control">
             </div>
         </div>
     </div>

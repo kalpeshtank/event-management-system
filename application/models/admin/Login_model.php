@@ -15,6 +15,19 @@ class Login_model extends CI_Model {
     }
 
     /**
+     * 
+     * @return type
+     */
+    function get_all_active_user_data() {
+        $this->db->select('*');
+        $this->db->where_not_in('user_type', SUPER_ADMIN);
+        $this->db->where('is_active', IS_ACTIVE_YES);
+        $this->db->from('user');
+        $recs = $this->db->get();
+        return $recs->result_array();
+    }
+
+    /**
      * get userdata by username
      * @param type $username
      * @return type
@@ -39,11 +52,21 @@ class Login_model extends CI_Model {
         $this->db->update('user');
     }
 
+    /**
+     * signup_data insert
+     * @param type $signup_data
+     * @return type
+     */
     function insert_signup_data($signup_data) {
         $this->db->insert('user', $signup_data);
         return $this->db->insert_id();
     }
 
+    /**
+     * get user information for the user id exits or not
+     * @param type $signup_data
+     * @return type
+     */
     function check_for_existing_user($signup_data) {
         $this->db->where('username', $signup_data['username']);
         $this->db->from('user');
@@ -52,12 +75,24 @@ class Login_model extends CI_Model {
     }
 
     /**
-     * 
+     * update user status of user id active or not
      */
     function update_status($user_id, $user_status) {
         $this->db->where('user_id', $user_id);
         $this->db->set('is_active', $user_status);
         $this->db->update('user');
+    }
+
+    /**
+     * get user data by user id
+     * @param type $user_id
+     * @return type
+     */
+    function get_by_user_id($user_id) {
+        $this->db->where('user_id', $user_id);
+        $this->db->from('user');
+        $resc = $this->db->get();
+        return $resc->row_array();
     }
 
 }
