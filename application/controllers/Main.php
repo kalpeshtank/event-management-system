@@ -1,25 +1,24 @@
 <?php
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Main extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
-	public function index()
-	{
-		$this->load->view('welcome_message');
-	}
+    public function __construct() {
+        parent::__construct();
+        $this->load->model('admin/sub_category_model');
+        $this->load->model('admin/category_model');
+        $this->load->model('admin/login_model');
+    }
+
+    public function index() {
+        $data['category'] = generate_array_for_id_object($this->category_model->get_all_category_data(), 'category_id');
+        $data['sub_category'] = generate_array_for_id_object($this->sub_category_model->get_all_sub_category_data(), 'sub_category_id');
+        $data['user_data'] = generate_array_for_id_object($this->login_model->get_all_active_user_data(), 'user_id');
+        $this->load->view('admin/common/header', $data);
+        $this->load->view('admin/main/main');
+        $this->load->view('admin/common/footer');
+        $this->load->view('admin/common/backbone_footer');
+    }
+
 }
