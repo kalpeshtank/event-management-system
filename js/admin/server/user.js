@@ -98,7 +98,9 @@ UserData.listView = Backbone.View.extend({
                     return false;
                 }
                 showSuccess('You have Succesfully Created Admin User');
-                userData[parseData.user_data['user_id']] = parseData.user_data;
+                var userItemObj = {};
+                userItemObj[parseData.user_data['user_id']] = parseData.user_data;
+                userData = $.extend({}, userData, userItemObj);
                 allUserDataTable.ajax.reload();
                 $('#user_name').val('');
                 $('#user_email').val('');
@@ -119,8 +121,11 @@ UserData.listView = Backbone.View.extend({
                 }
                 if (status == IS_ACTIVE_NO) {
                     showSuccess('User Deactive successfully');
+                    delete userData[userId];
                 } else if (status == IS_ACTIVE_YES) {
-                    userData[parseData.user_data['user_id']] = parseData.user_data;
+                    var userItemObj = {};
+                    userItemObj[parseData.user_data['user_id']] = parseData.user_data;
+                    userData = $.extend({}, userData, userItemObj);
                     showSuccess('User Active successfully');
                 }
                 allUserDataTable.ajax.reload();

@@ -93,7 +93,9 @@ SubCategory.listView = Backbone.View.extend({
                     return false;
                 }
                 showSuccess(parseData.message);
-                subCategoryData[parseData.sub_category_data['sub_category_id']] = parseData.sub_category_data;
+                var subCategoryItemObj = {};
+                subCategoryItemObj[parseData.sub_category_data['sub_category_id']] = parseData.sub_category_data;
+                subCategoryData = $.extend({}, subCategoryData, subCategoryItemObj);
                 SubCategoryDataTable.ajax.reload();
                 that.newSubCategory();
             }
@@ -115,6 +117,7 @@ SubCategory.listView = Backbone.View.extend({
                         return false;
                     }
                     showSuccess(parseData.message);
+                    delete subCategoryData[subCategoryId];
                     SubCategoryDataTable.ajax.reload();
                 }
             });

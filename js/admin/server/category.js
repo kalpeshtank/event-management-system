@@ -93,7 +93,10 @@ Category.listView = Backbone.View.extend({
                     return false;
                 }
                 showSuccess(parseData.message);
-                categoryData[parseData.category_data['category_id']] = parseData.category_data;
+                var categoryItemObj = {};
+                categoryItemObj[parseData.category_data['category_id']] = parseData.category_data;
+                categoryData = $.extend({}, categoryData, categoryItemObj);
+
                 categoryDataTable.ajax.reload();
                 that.newCategory();
             }
@@ -115,6 +118,7 @@ Category.listView = Backbone.View.extend({
                         return false;
                     }
                     showSuccess(parseData.message);
+                    delete categoryData[categoryId];
                     categoryDataTable.ajax.reload();
                 }
             });
