@@ -1,0 +1,30 @@
+HTTrack3.49-2+htsswf+htsjava launched on Wed, 15 Nov 2017 17:38:01 at https://www.templatemonster.com/demo/53682.html +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://www.templatemonster.com/demo/53682.html -O1 "C:\Users\Admin\Desktop\demo-events-2" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+17:38:16	Warning: 	Moved Permanently for https://www.templatemonster.com/demo/chat_presales=1; expires=03 Jul 2036 21:44:38 GMT; domain=.templatemonster.com; path=/
+17:38:16	Warning: 	Redirected link is identical because of 'URL Hack' option: https://www.templatemonster.com/demo/chat_presales=1; expires=03 Jul 2036 21:44:38 GMT; domain=.templatemonster.com; path=/ and https://www.templatemonster.com/demo/chat_presales=1; expires=03 jul 2036 21:44:38 gmt; domain=.templatemonster.com; path=/
+17:38:16	Warning: 	Warning moved treated for https://www.templatemonster.com/demo/chat_presales=1; expires=03 Jul 2036 21:44:38 GMT; domain=.templatemonster.com; path=/ (real one is https://www.templatemonster.com/demo/chat_presales=1; expires=03 jul 2036 21:44:38 gmt; domain=.templatemonster.com; path=/)
+17:38:16	Warning: 	Moved Permanently for https://www.templatemonster.com/demo/callback_notice=closed; expires=03 Jul 2036 21:44:38 GMT; domain=.templatemonster.com; path=/
+17:38:16	Warning: 	Redirected link is identical because of 'URL Hack' option: https://www.templatemonster.com/demo/callback_notice=closed; expires=03 Jul 2036 21:44:38 GMT; domain=.templatemonster.com; path=/ and https://www.templatemonster.com/demo/callback_notice=closed; expires=03 jul 2036 21:44:38 gmt; domain=.templatemonster.com; path=/
+17:38:16	Warning: 	Warning moved treated for https://www.templatemonster.com/demo/callback_notice=closed; expires=03 Jul 2036 21:44:38 GMT; domain=.templatemonster.com; path=/ (real one is https://www.templatemonster.com/demo/callback_notice=closed; expires=03 jul 2036 21:44:38 gmt; domain=.templatemonster.com; path=/)
+17:38:16	Error: 	"Bad Request" (400) at link www.googletagmanager.com/gtm.js?id= (from https://www.templatemonster.com/demo/53682.html)
+17:38:21	Error: 	"Not Found" (404) at link https://www.templatemonster.com/demo/chat_presales=1; expires=03 jul 2036 21:44:38 gmt; domain=.templatemonster.com; path=/ (from https://www.templatemonster.com/demo/53682.html)
+17:38:21	Error: 	"Not Found" (404) at link https://www.templatemonster.com/demo/callback_notice=closed; expires=03 jul 2036 21:44:38 gmt; domain=.templatemonster.com; path=/ (from https://www.templatemonster.com/demo/53682.html)
+17:38:21	Warning: 	Moved Permanently for https://www.templatemonster.com/demo/ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/
+17:38:21	Warning: 	Redirected link is identical because of 'URL Hack' option: https://www.templatemonster.com/demo/ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/ and https://www.templatemonster.com/demo/abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz0123456789+/
+17:38:21	Warning: 	Warning moved treated for https://www.templatemonster.com/demo/ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/ (real one is https://www.templatemonster.com/demo/abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz0123456789+/)
+17:38:21	Error: 	"Not Found" (404) at link https://www.templatemonster.com/demo/require (from https://s.tmimgcdn.com/js/plasma-pocket-react/monsterBundle.js?d=647060a)
+17:38:22	Error: 	"Not Found" (404) at link https://www.templatemonster.com/demo/$&/ (from https://s.tmimgcdn.com/js/plasma-pocket-react/monsterBundle.js?d=647060a)
+17:38:22	Warning: 	Moved Permanently for https://www.templatemonster.com/demo/@@History/
+17:38:22	Warning: 	Redirected link is identical because of 'URL Hack' option: https://www.templatemonster.com/demo/@@History/ and https://www.templatemonster.com/demo/@@history/
+17:38:22	Warning: 	Warning moved treated for https://www.templatemonster.com/demo/@@History/ (real one is https://www.templatemonster.com/demo/@@history/)
+17:38:23	Error: 	"Not Found" (404) at link https://www.templatemonster.com/demo/abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz0123456789+/ (from https://s.tmimgcdn.com/js/plasma-pocket-react/monsterBundle.js?d=647060a)
+17:38:24	Error: 	"Not Found" (404) at link https://www.templatemonster.com/demo/@@history/ (from https://s.tmimgcdn.com/js/plasma-pocket-react/monsterBundle.js?d=647060a)
+
+HTTrack Website Copier/3.49-2 mirror complete in 23 seconds : 42 links scanned, 30 files written (3739047 bytes overall) [1595070 bytes received at 69350 bytes/sec], 3651012 bytes transferred using HTTP compression in 17 files, ratio 38%, 6.0 requests per connection
+(7 errors, 12 warnings, 0 messages)

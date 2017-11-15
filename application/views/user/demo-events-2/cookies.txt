@@ -1,0 +1,6 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+.templatemonster.com	TRUE	/	FALSE	1999999999	PHPSESSID	3t7tuinb16r9qbhf8psvqslfg4
+.templatemonster.com	TRUE	/	FALSE	1999999999	aff	TM
+.templatemonster.com	TRUE	/	FALSE	1999999999	affT	1510747763.4664347763
+
