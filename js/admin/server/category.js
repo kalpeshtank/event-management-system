@@ -115,6 +115,7 @@ Category.listView = Backbone.View.extend({
                         return false;
                     }
                     showSuccess(parseData.message);
+                    delete categoryData[categoryId];
                     categoryDataTable.ajax.reload();
                 }
             });

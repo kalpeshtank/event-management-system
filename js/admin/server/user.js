@@ -119,6 +119,7 @@ UserData.listView = Backbone.View.extend({
                 }
                 if (status == IS_ACTIVE_NO) {
                     showSuccess('User Deactive successfully');
+                    delete userData[userId];
                 } else if (status == IS_ACTIVE_YES) {
                     userData[parseData.user_data['user_id']] = parseData.user_data;
                     showSuccess('User Active successfully');
