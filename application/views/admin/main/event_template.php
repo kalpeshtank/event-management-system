@@ -5,8 +5,11 @@
 <?php $this->load->view('admin/event/form'); ?>
 </script>
 <script type="text/x-handlebars-template" id="event_table_template">
-    <?php $this->load->view('admin/event/table'); ?>
+<?php $this->load->view('admin/event/table'); ?>
 </script>
 <script type="text/x-handlebars-template" id="event_action_button_template">
-    <?php $this->load->view('admin/event/action_button'); ?>
+<?php $this->load->view('admin/event/action_button'); ?>
+</script>
+<script type="text/x-handlebars-template" id="file_upload_template">
+    <?php $this->load->view('admin/event/file_upload_template'); ?>
 </script>

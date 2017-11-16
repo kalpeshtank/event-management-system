@@ -2,6 +2,7 @@ var eventListTemplate = Handlebars.compile($('#event_list_template').html());
 var eventFormTemplate = Handlebars.compile($('#event_form_template').html());
 var eventTableTemplate = Handlebars.compile($('#event_table_template').html());
 var eventActionButtonTemplate = Handlebars.compile($('#event_action_button_template').html());
+var fileUploadTemplate = Handlebars.compile($('#file_upload_template').html());
 var EventCreate = {
     run: function () {
         this.router = new this.Router();
@@ -224,7 +225,7 @@ EventCreate.listView = Backbone.View.extend({
         var that = this;
         $.ajax({
             type: 'post',
-            url: 'candidate_details/get_profile_image',
+            url: 'admin/events/get_event_image',
             data: {
                 "event_id": eventId
             },
@@ -242,14 +243,14 @@ EventCreate.listView = Backbone.View.extend({
                         row += displayImages('../profile_pictures/', 'Registration', eventId, s);
                     });
                 } else {
-                    row += displayDefaultImages('../client/images/no-image.jpg');
+                    row += displayDefaultImages('../event-management-system/event_pictures/no-image.jpg');
                 }
                 $('#display_images').html(row);
             }
         });
 
-        $('#registration_image_upload').html(registrationImageUploadTemplate);
-        $('#upload_profile_image').html('');
+        $('#event_image_upload').html(fileUploadTemplate);
+        $('#upload_event_image').html('');
         $('#popup_model').modal('show');
         $('#upload_file').html('<div id="file_upload" class="upload_btn">Upload</div>');
         $("#upload_file").uploadFile({

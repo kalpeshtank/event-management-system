@@ -178,4 +178,75 @@ class Events extends CI_Controller {
         echo json_encode(array('events_data' => $events_data));
     }
 
+    /**
+     * 
+     */
+    function get_event_image() {
+        $event_id = $this->input->post('event_id');
+        $images = $this->_get_image($event_id);
+        echo json_encode($images);
+    }
+
+    function _get_image($event_id) {
+        $images_array = array();
+        $upload_folder = FCPATH . 'event_pictures/' . $event_id;
+        if (is_dir($upload_folder)) {
+            $dir_contents = scandir($upload_folder);
+            foreach ($dir_contents as $file) {
+                if ($file != ".." && $file != ".")
+                    array_push($images_array, $file);
+            }
+        }
+        return $images_array;
+    }
+
+    function upload_user_profile_image() {
+        $candidate_id = $this->input->post('candidate_id');
+        $profile_file_path = FCPATH . "profile_pictures";
+        if (!is_dir($profile_file_path)) {
+            mkdir($profile_file_path);
+            chmod($profile_file_path, 0777);
+        }
+        $image_types = array(
+            'jpg,JPG,jpeg,JPEG,png'
+        );
+        $sub_path = $profile_file_path . DIRECTORY_SEPARATOR . $candidate_id;
+        if (!is_dir($sub_path)) {
+            mkdir($sub_path);
+            chmod($sub_path, 0777);
+        }
+
+        $total_number_of_files_in_folder = count(scandir($sub_path)) - 2;
+        if ($total_number_of_files_in_folder < 4) {
+            $path = $sub_path . DIRECTORY_SEPARATOR;
+            $output_dir = $path;
+
+            if (isset($_FILES["myfile"])) {
+                $error = $_FILES["myfile"]["error"];
+                if (!is_array($_FILES["myfile"]["name"])) {
+                    //single file
+                    $fileName = preg_replace('/\s/', '_', $_FILES["myfile"]["name"]);
+                    if (in_array($_FILES["myfile"]["type"], $image_types)) {
+                        $output_dir = $output_dir;
+                    }
+                    move_uploaded_file($_FILES["myfile"]["tmp_name"], $output_dir . $fileName);
+                }
+            }
+            echo json_encode(array('success' => TRUE));
+        } else {
+            echo json_encode(array('success' => FALSE));
+        }
+    }
+
+    function delete_image() {
+        $image = $this->input->post('image_key');
+        $candidate_id = $this->input->post('candidate_id');
+        $upload_folder = FCPATH . 'profile_pictures/' . $candidate_id . '/' . $image;
+
+        if (is_file($upload_folder)) {
+            unlink($upload_folder);
+        }
+        echo json_encode(array('success' => true));
+    }
+
 }
