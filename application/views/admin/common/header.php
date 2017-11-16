@@ -119,6 +119,7 @@
                     });-->
         <script type="text/javascript">
             //------------------------------ These are the pre-compiled templates ---------------------------------
+            var basUrl = '<?php echo $base_url; ?>';
             var optionTemplate = Handlebars.compile($("#option_template").html());
             var spinnerTemplate = Handlebars.compile($("#spinner_template").html());
             var iconTemplate = Handlebars.compile($("#icon_template").html());
@@ -186,19 +187,6 @@
             </header>
             <?php $this->load->view('admin/common/sidebar'); ?>
 
-            <div class="modal fade" id="delete_model" role="dialog">
-                <div class="modal-dialog modal-sm">
-                    <div class="modal-content"> 
-                        <div class="modal-body">
-                            <p class="msg">Are you sure you want to Delete?</p>
-                        </div>
-                        <div class="modal-body" style="text-align: right">
-                            <button type="button" class="btn btn-default" data-dismiss="modal" id="confirm_delete"><b>YES</b></button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal" id="cancel_delete"><b>NO</b></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="modal fade" id="popup_model" data-backdrop="static">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -210,6 +198,19 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary pull-right" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="delete_model" role="dialog">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content"> 
+                        <div class="modal-body">
+                            <p class="msg">Are you sure you want to Delete?</p>
+                        </div>
+                        <div class="modal-body" style="text-align: right">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" id="confirm_delete"><b>YES</b></button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" id="cancel_delete"><b>NO</b></button>
                         </div>
                     </div>
                 </div>

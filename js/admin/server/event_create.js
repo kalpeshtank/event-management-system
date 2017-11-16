@@ -226,76 +226,63 @@ EventCreate.listView = Backbone.View.extend({
         $.ajax({
             type: 'post',
             url: 'admin/events/get_event_image',
-            data: {
-                "event_id": eventId
-            },
+            data: {"event_id": eventId},
             success: function (data) {
                 var images = JSON.parse(data);
-//                var total = 4;
-//                if (images.length < total) {
-//                    $('.ajax-upload-dragdrop').show();
-//                } else {
-//                    $('.ajax-upload-dragdrop').hide();
-//                }
                 var row = '';
                 if (images != '') {
                     $.each(images, function (k, s) {
-                        row += displayImages('../profile_pictures/', 'Registration', eventId, s);
+                        var url = basUrl + 'event_pictures/';
+                        row += displayImages(url, 'EventCreate', eventId, s);
                     });
                 } else {
-                    row += displayDefaultImages('../event-management-system/event_pictures/no-image.jpg');
+                    var url = basUrl + 'event_pictures/no-image.jpg';
+                    row += displayDefaultImages(url);
                 }
                 $('#display_images').html(row);
             }
         });
-
         $('#event_image_upload').html(fileUploadTemplate);
         $('#upload_event_image').html('');
         $('#popup_model').modal('show');
         $('#upload_file').html('<div id="file_upload" class="upload_btn">Upload</div>');
         $("#upload_file").uploadFile({
-            url: "candidate_details/upload_user_profile_image",
+            url: "admin/events/upload_event_image",
             fileName: "myfile",
             acceptFiles: "image/*",
             maxFileSize: 1024 * 1024 * 200,
             allowedTypes: "jpg,JPG,jpeg,JPEG,png",
-            formData: {
-                "candidate_id": eventId
-            },
+            formData: {"event_id": eventId},
             onSuccess: function (files, response, xhr) {
-//                if (files[0] < 4) {
-//                    $('.ajax-upload-dragdrop').show();
-//                } else {
-//                    $('.ajax-upload-dragdrop').hide();
-//                }
                 var parseData = JSON.parse(response);
                 if (parseData.success == true) {
-                    $('#display_images').append(displayImages('../profile_pictures/', 'Registration', eventId, files[0]));
+                    var url = basUrl + 'event_pictures/';
+                    $('#display_images').append(displayImages(url, 'EventCreate', eventId, files[0]));
                     $('#no_image').hide();
                 }
             }
         });
     },
-    deleteImage: function (image_key, candidate_id) {
+    deleteImage: function (image_key, event_id) {
         getConfirm(function (result) {
             if (result === false) {
-                candidate_id = 0;
+                event_id = 0;
                 return false;
             }
-            if (candidate_id == 0) {
+            if (event_id == 0) {
                 return false;
             }
             $.ajax({
                 type: 'post',
-                url: "candidate_details/delete_image",
+                url: "admin/events/delete_image",
                 data: {
-                    candidate_id: candidate_id,
+                    event_id: event_id,
                     image_key: image_key
                 },
                 success: function (data) {
                     $('#delete_image' + image_key).hide('slow');
-                    Registration.listview.fileUpload(candidate_id);
-                    showNotificationAdmin('Image Deleted Successfully');
+                    EventCreate.listview.fileUpload(event_id);
+                    showSuccess('Image Deleted Successfully');
                 }
             });
         });
