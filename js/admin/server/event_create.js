@@ -219,5 +219,84 @@ EventCreate.listView = Backbone.View.extend({
                 $('#event_end_time').val(convert24To12Hours(eventsData.event_end_time));
             }
         });
+    },
+    fileUpload: function (eventId) {
+        var that = this;
+        $.ajax({
+            type: 'post',
+            url: 'candidate_details/get_profile_image',
+            data: {
+                "event_id": eventId
+            },
+            success: function (data) {
+                var images = JSON.parse(data);
+//                var total = 4;
+//                if (images.length < total) {
+//                    $('.ajax-upload-dragdrop').show();
+//                } else {
+//                    $('.ajax-upload-dragdrop').hide();
+//                }
+                var row = '';
+                if (images != '') {
+                    $.each(images, function (k, s) {
+                        row += displayImages('../profile_pictures/', 'Registration', eventId, s);
+                    });
+                } else {
+                    row += displayDefaultImages('../client/images/no-image.jpg');
+                }
+                $('#display_images').html(row);
+            }
+        });
+
+        $('#registration_image_upload').html(registrationImageUploadTemplate);
+        $('#upload_profile_image').html('');
+        $('#popup_model').modal('show');
+        $('#upload_file').html('<div id="file_upload" class="upload_btn">Upload</div>');
+        $("#upload_file").uploadFile({
+            url: "candidate_details/upload_user_profile_image",
+            fileName: "myfile",
+            acceptFiles: "image/*",
+            maxFileSize: 1024 * 1024 * 200,
+            allowedTypes: "jpg,JPG,jpeg,JPEG,png",
+            formData: {
+                "candidate_id": eventId
+            },
+            onSuccess: function (files, response, xhr) {
+//                if (files[0] < 4) {
+//                    $('.ajax-upload-dragdrop').show();
+//                } else {
+//                    $('.ajax-upload-dragdrop').hide();
+//                }
+                var parseData = JSON.parse(response);
+                if (parseData.success == true) {
+                    $('#display_images').append(displayImages('../profile_pictures/', 'Registration', eventId, files[0]));
+                    $('#no_image').hide();
+                }
+            }
+        });
+    },
+    deleteImage: function (image_key, candidate_id) {
+        getConfirm(function (result) {
+            if (result === false) {
+                candidate_id = 0;
+                return false;
+            }
+            if (candidate_id == 0) {
+                return false;
+            }
+            $.ajax({
+                type: 'post',
+                url: "candidate_details/delete_image",
+                data: {
+                    candidate_id: candidate_id,
+                    image_key: image_key
+                },
+                success: function (data) {
+                    $('#delete_image' + image_key).hide('slow');
+                    Registration.listview.fileUpload(candidate_id);
+                    showNotificationAdmin('Image Deleted Successfully');
+                }
+            });
+        });
     }
 });

@@ -162,4 +162,23 @@ function renderOptionsForTwoDimensionalArrayWithKeyValue(dataArray, comboId, key
         }
     });
 }
+function displayImages(url, name, candidateId, s) {
+    var row = '';
+    row += '<div class="col-md-4" id="delete_image">';
+    row += '<div class="thumbnail" style="border: 1px solid #ddd;border-radius: 4px;padding: 4px;">';
+    row += '<div class="fa fa-trash-o" onclick="' + name + '.listview.deleteImage(\'' + s + '\',' + candidateId + ');" style="cursor: pointer;float: right;padding: 3px;"></div>';
+    row += '<img src="' + url + candidateId + '/' + s + '" name="' + s + '" class="img-responsive"/>';
+    row += '</div>';
+    row += '</div>';
+    return row;
+}
+function displayDefaultImages(url) {
+    var row = '';
+    row += '<div class="col-md-4" id="no_image">';
+    row += '<div class="thumbnail" style="border: 1px solid #ddd;border-radius: 4px;padding: 4px;">';
+    row += '<img src="' + url + '" class="img-responsive"/>';
+    row += '</div>';
+    row += '</div>';
+    return row;
+}
 
