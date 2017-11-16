@@ -1,5 +1,0 @@
-# HTTrack Website Copier Cookie File
-# This file format is compatible with Netscape cookies
-.ancorathemes.com	TRUE	/	FALSE	1999999999	__cfduid	d60ad806cc7aedb4f2d3441f6f0757a161510747594
-unicaevents.ancorathemes.com	TRUE	/	FALSE	1999999999	wordpress_test_cookie	WP+Cookie+check
-
