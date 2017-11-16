@@ -87,6 +87,9 @@
         <script src="<?php echo $base_url; ?>js/admin/plugins/datetimepicker/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
         <script type="text/javascript" src="<?php echo base_url() ?>js/utility.js"></script>
         <script type="text/javascript" src="<?php echo base_url() ?>js/dateutil.js"></script>
+        <!----------file uploading-------------------->
+        <link href="<?php echo $base_url; ?>css/uploadfile.min.css" rel="stylesheet">
+        <script src="<?php echo $base_url; ?>js/jquery.uploadfile.js"></script>
         <!-- bootstrap time picker -->
         <script src="<?php echo $base_url; ?>js/admin/plugins/timepicker/bootstrap-timepicker.min.js"></script>
         <!--------------------------- Template definitions start ------------------------------------------------>
@@ -192,6 +195,21 @@
                         <div class="modal-body" style="text-align: right">
                             <button type="button" class="btn btn-default" data-dismiss="modal" id="confirm_delete"><b>YES</b></button>
                             <button type="button" class="btn btn-default" data-dismiss="modal" id="cancel_delete"><b>NO</b></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="popup_model" data-backdrop="static">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div id="event_image_upload"></div>
+                            <div id="display_images" style="padding-top: 5px;">
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary pull-right" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>

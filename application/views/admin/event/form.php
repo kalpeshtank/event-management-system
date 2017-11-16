@@ -121,12 +121,6 @@
                 </select>
             </div>
         </div>
-        <div class="form-group row col-md-6">
-            <label class="col-md-5 control-label">Event Photo :</label>
-            <div class="col-md-7">
-                <input type="file" id="event_photo" tabindex="15" name="event_photo" class="form-control">
-            </div>
-        </div>
     </div>
     <div class="box-footer">
         <button type="button" class="btn btn-xs btn-primary save_event_btn" tabindex="15" id="save_event_btn">
