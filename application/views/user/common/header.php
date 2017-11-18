@@ -1,80 +1,39 @@
 <?php $base_url = base_url(); ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <!--9925342207-->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Event-Management-System</title>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <!-- Tell the browser to be responsive to screen width -->
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <!-- Bootstrap 3.3.6 -->
-        <link rel="stylesheet" href="<?php echo $base_url; ?>css/admin/bootstrap.min.css">
-        <link rel="stylesheet" href="<?php echo $base_url; ?>js/admin/plugins/select2/select2.css">
-        <!-- Font Awesome -->
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="<?php echo $base_url; ?>css/admin/bootstrap.min.css">    
+        <!-- Main Style -->
+        <link rel="stylesheet" type="text/css" href="<?php echo $base_url; ?>css/user/main.css">
+        <!-- Responsive Style -->
+        <link rel="stylesheet" type="text/css" href="<?php echo $base_url; ?>css/user/responsive.css">
+        <!-- Fonts -->
         <link rel="stylesheet" href="<?php echo $base_url; ?>css/font-awesome.min.css">
-        <!-- Ionicons -->
-        <link rel="stylesheet" href="<?php echo $base_url; ?>css/admin/ionicons.min.css">
-        <!-- Theme style -->
-        <link rel="stylesheet" href="<?php echo $base_url; ?>adminLTE/css/AdminLTE.min.css">
-        <link rel="stylesheet" href="<?php echo $base_url; ?>adminLTE/css/skins/_all-skins.min.css">
-        <!--AdminLTE Skins. Choose a skin from the css/skins-->
-        <link rel="stylesheet" href="<?php echo $base_url; ?>adminLTE/css/skins/_all-skins.min.css">
-        <!--iCheck-->  
-        <link rel="stylesheet" href="<?php echo $base_url; ?>js/admin/plugins/iCheck/flat/blue.css">
-        <link rel="stylesheet" href="<?php echo $base_url; ?>js/admin/plugins/pace/pace.min.css">
-        <!-- Animation Css -->
-        <link rel="stylesheet"  href="<?php echo base_url(); ?>js/admin/plugins/animate-css/animate.css">
-        <!-- jvectormap 
-        <!-- Date Picker -->
-        <!--<link rel="stylesheet" href="<?php echo $base_url; ?>js/plugins/datepicker/datepicker3.css">-->
-        <!-- Daterange picker -->
-        <!--<link rel="stylesheet" href="<?php echo $base_url; ?>js/plugins/daterangepicker/daterangepicker.css">-->
-        <!-- bootstrap wysihtml5 - text editor -->
-        <link rel="stylesheet" href="<?php echo $base_url; ?>js/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-        <link rel="stylesheet" href="<?php echo $base_url; ?>css/admin/dataTables.bootstrap.min.css">
-        <link rel="stylesheet" href="<?php echo $base_url; ?>js/admin/plugins/datatables/buttons.dataTables.min.css">
-        <link rel="stylesheet" href="<?php echo $base_url; ?>css/admin/style.css">
-        <link rel="stylesheet" href="<?php echo $base_url; ?>js/admin/plugins/datetimepicker/bootstrap-datetimepicker.css">
-        <!-- Bootstrap time Picker -->
-        <link rel="stylesheet" href="<?php echo $base_url; ?>js/admin/plugins/timepicker/bootstrap-timepicker.min.css">
-        <!--spinner.css-->
-        <link rel="stylesheet" href="<?php echo $base_url; ?>css/admin/spinner.css">
-        <!-- footer-->
+        <!-- Icon -->
+        <link rel="stylesheet" type="text/css" href="<?php echo $base_url; ?>fonts/simple-line-icons.css">
+        <!-- Slicknav -->
+        <link rel="stylesheet" type="text/css" href="<?php echo $base_url; ?>css/user/slicknav.css">
+        <!-- Nivo Lightbox -->
+        <link rel="stylesheet" type="text/css" href="<?php echo $base_url; ?>css/user/nivo-lightbox.css"> 
+        <!-- Animate -->
+        <link rel="stylesheet" type="text/css" href="<?php echo $base_url; ?>css/user/animate.css">
+        <!-- Owl carousel -->
+        <link rel="stylesheet" type="text/css" href="<?php echo $base_url; ?>css/user/owl.carousel.css">   
         <!-- jQuery 2.2.3 -->
         <script src="<?php echo $base_url; ?>js/admin/plugins/jQuery/jquery-2.2.3.min.js" type="text/javascript"></script>
         <!-- jQuery UI 1.11.4 -->
         <script src="<?php echo $base_url; ?>js/admin/jquery-ui.min.js" type="text/javascript"></script>
-        <script type="text/javascript">
-            $.widget.bridge('uibutton', $.ui.button);
-        </script>
-        <!-- Bootstrap 3.3.6 -->
-        <script src="<?php echo $base_url; ?>js/admin/bootstrap.min.js" type="text/javascript"></script>
-        <script src="<?php echo $base_url; ?>js/admin/plugins/select2/select2.full.min.js" type="text/javascript"></script>
-        <!-- Morris.js charts -->
-        <script src="<?php echo $base_url; ?>js/raphael-min.js" type="text/javascript"></script>
-        <!-- daterangepicker -->
-        <script src="<?php echo $base_url; ?>js/admin/moment.min.js" type="text/javascript"></script>
-        <!--<script src="<?php echo $base_url; ?>js/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>-->
-        <!-- datepicker -->
-        <!--<script src="<?php echo $base_url; ?>js/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>-->
-        <!-- Bootstrap WYSIHTML5 -->
-        <script src="<?php echo $base_url; ?>js/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
-        <script src="<?php echo $base_url; ?>js/admin/plugins/pace/pace.min.js" type="text/javascript"></script>
-        <script src="<?php echo $base_url; ?>js/admin/jquery.form.js" type="text/javascript"></script>    
-        <script src="<?php echo $base_url; ?>adminLTE/js/app.min.js" type="text/javascript"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="<?php echo $base_url; ?>adminLTE/js/demo.js" type="text/javascript"></script>
-        <script src="<?php echo $base_url; ?>js/admin/jquery.form.js" type="text/javascript"></script>
-        <script src="<?php echo $base_url; ?>js/admin/jquery.dataTables.min.js" type="text/javascript"></script>
-        <script src="<?php echo $base_url; ?>js/admin/dataTables.bootstrap.min.js" type="text/javascript"></script>
-        <script src="<?php echo $base_url; ?>js/admin/plugins/datatables/date-eu.js" type="text/javascript"accountTypeArray></script>
-
+        <!-- Color CSS Styles  -->
+        <link rel="stylesheet" type="text/css" href="<?php echo $base_url; ?>css/user/colors/default.css" media="screen" /> 
         <!-- Bootstrap Notify Plugin Js -->
         <script src="<?php echo base_url(); ?>js/admin/plugins/bootstrap-notify/bootstrap-notify.js" type="text/javascript"></script>
-
+        <script src="<?php echo $base_url; ?>js/admin/jquery.form.js" type="text/javascript"></script>
+        <script src="<?php echo $base_url; ?>js/admin/jquery.form.js" type="text/javascript"></script>
         <script src="<?php echo $base_url; ?>js/mordanizr.js" type="text/javascript"></script>
         <script src="<?php echo $base_url; ?>js/underscore.js" type="text/javascript"></script>
         <script src="<?php echo $base_url; ?>js/backbone.js" type="text/javascript"></script>
@@ -84,11 +43,10 @@
         <script src="<?php echo $base_url; ?>js/notifications.js" type="text/javascript"></script>
         <script src="<?php echo $base_url; ?>js/admin/fuelux/fuelux.spinner.js" type="text/javascript"></script>
         <script src="<?php echo $base_url; ?>js/admin/ace/elements.spinner.js" type="text/javascript"></script>
+        <script src="<?php echo $base_url; ?>js/admin/moment.min.js" type="text/javascript"></script>
         <script src="<?php echo $base_url; ?>js/admin/plugins/datetimepicker/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
         <script type="text/javascript" src="<?php echo base_url() ?>js/utility.js"></script>
         <script type="text/javascript" src="<?php echo base_url() ?>js/dateutil.js"></script>
-        <!-- bootstrap time picker -->
-        <script src="<?php echo $base_url; ?>js/admin/plugins/timepicker/bootstrap-timepicker.min.js"></script>
         <!--------------------------- Template definitions start ------------------------------------------------>
         <script id="option_template" type="text/x-handlebars-template">
             <option value="{{value_field}}">{{text_field}}</option>
@@ -100,20 +58,6 @@
             <label class="fa fa-spinner fa-spin"></label>
         </script>
         <!--------------------------------  Template definitions end -------------------------------------------->
-        <!--         $(document).ajaxStart(function () {
-                        $.ajax({
-                            type: 'POST',
-                            url: 'main/check_authenticated_for_ajax',
-                            success: function (response) {
-                                var parseData = JSON.parse(response);
-                                if (parseData.success === false) {
-                                    window.location = baseUrl + "login";
-                                    showError(parseData.message);
-                                    return false;
-                                }
-                            }
-                        });
-                    });-->
         <script type="text/javascript">
             //------------------------------ These are the pre-compiled templates ---------------------------------
             var optionTemplate = Handlebars.compile($("#option_template").html());
@@ -131,68 +75,91 @@
             var IS_ACTIVE_YES =<?php echo IS_ACTIVE_YES ?>;
             var IS_ACTIVE_NO =<?php echo IS_ACTIVE_NO ?>;
             var SUPER_ADMIN =<?php echo SUPER_ADMIN ?>;
-            var USER_TYPE =<?php echo get_from_session('user_type'); ?>;
-
             $(document).ajaxComplete(function () {
                 $('[data-toggle="tooltip"]').tooltip();
             });
         </script>
     </head>
-    <body class="hold-transition skin-blue-light sidebar-mini">
-        <div class="wrapper">
-            <header class="main-header">
-                <!-- Logo -->
-                <a href="#" class="logo">
-                    <!-- mini logo for sidebar mini 50x50 pixels -->
-                    <span class="logo-mini"><b>EMS</b></span>
-                    <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg"><b>Event-Management</b></span>
-                </a>
-                <!-- Header Navbar: style can be found in header.less -->
-                <nav class="navbar navbar-static-top">
-                    <!-- Sidebar toggle button-->
-                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                        <span class="sr-only">Toggle navigation</span>
-                    </a>
-                    <div class="navbar-custom-menu">
-                        <ul class="nav navbar-nav">
-                            <li class="dropdown user user-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="<?php echo $base_url; ?>adminLTE/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                                    <span class="hidden-xs" style="text-transform: capitalize;"><?php echo get_from_session('name'); ?></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <!-- User image -->
-                                    <li class="user-header">
-                                        <img src="<?php echo $base_url; ?>adminLTE/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                                        <p style="text-transform: capitalize;"><?php echo get_from_session('name'); ?></p>
-                                    </li>
-                                    <li class="user-footer">
-                                        <div class="pull-left">
-                                            <a href="<?php echo $base_url; ?>admin/login/change_password" class="btn btn-default btn-flat">Change Password</a>
-                                        </div>
-                                        <div class="pull-right">
-                                            <a href="<?php echo $base_url; ?>admin/login/logout" class="btn btn-default btn-flat">Sign out</a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+    <body>
+        <!-- Header Area wrapper Starts -->
+        <header id="header-wrap">
+            <!-- Roof area Starts -->
+            <div id="roof" class="hidden-xs">
+                <div class="container">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="info-bar-address">
+                            <i class="icon-location-pin"></i> San Francisco, CA, United States
+                        </div>
                     </div>
-                </nav>
-            </header>
-            <?php $this->load->view('admin/common/sidebar'); ?>
-
-            <div class="modal fade" id="delete_model" role="dialog">
-                <div class="modal-dialog modal-sm">
-                    <div class="modal-content"> 
-                        <div class="modal-body">
-                            <p class="msg">Are you sure you want to Delete?</p>
+                    <div class="col-md-6 col-sm-6">
+                        <!-- Quick Contacts Starts -->
+                        <div class="quick-contacts">
+                            <span><i class="icon-phone"></i> (00) 123 456 789</span>
+                            <span><i class="icon-envelope"></i><a href="#">email@gmail.com</a></span>
                         </div>
-                        <div class="modal-body" style="text-align: right">
-                            <button type="button" class="btn btn-default" data-dismiss="modal" id="confirm_delete"><b>YES</b></button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal" id="cancel_delete"><b>NO</b></button>
-                        </div>
+                        <!-- Quick Contacts End -->
                     </div>
                 </div>
             </div>
+            <!-- Roof area End -->
+
+            <!-- Nav Menu Section Start -->
+            <div class="navigation-menu">
+                <nav class="navbar navbar-default navbar-event" >
+                    <div class="container">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header col-md-2">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="index.html"><img src="<?php echo $base_url; ?>uploads/logo1.png" alt=""></a>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="navbar">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="active"><a href="index.html">Home</a></li>
+                                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" >Pages <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="about.html">About Us</a></li>
+                                        <li><a href="gallery.html">Gallery</a></li>
+                                        <li><a href="pricing.html">Pricing Table</a></li>
+                                        <li><a href="sponsors.html">Sponsors</a></li>
+                                        <li><a href="single-post.html">Single Post</a></li>
+                                    </ul>
+                                </li>                
+                                <li><a href="schedule.html">Schedule</a></li>              
+                                <li><a href="speakers.html">Speakers</a></li>                
+                                <li><a href="blog.html">Blog</a></li>             
+                                <li class="animated bounceIn"><a href="pricing.html">Buy Tickets</a></li>                
+                                <li><a href="contact.html">Contact</a></li>                
+                            </ul>
+                        </div><!-- /navbar-collapse -->
+                    </div><!-- /container -->
+
+                    <!-- Mobile Menu Start -->
+                    <ul class="wpb-mobile-menu">
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <li><a href="#">Pages</a>
+                            <ul class="dropdown">
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="gallery.html">Gallery</a></li>
+                                <li><a href="pricing.html">Pricing Table</a></li>
+                                <li><a href="sponsors.html">Sponsors</a></li>
+                                <li><a href="single-post.html">Single Post</a></li>
+                            </ul>
+                        </li>                
+                        <li><a href="schedule.html">Schedule</a></li>              
+                        <li><a href="speakers.html">Speakers</a></li>                
+                        <li><a href="blog.html">Blog</a></li>             
+                        <li><a href="pricing.html">Buy Tickets</a></li>                
+                        <li><a href="contact.html">Contact</a></li> 
+                    </ul>
+                    <!-- Mobile Menu End -->
+
+                </nav>
+            </div>
+            <!-- Nav Menu Section End -->
+        </header>
