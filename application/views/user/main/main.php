@@ -6,5 +6,5 @@
 </div>
 
 <?php
-$this->load->view('admin/main/user_list');
+$this->load->view('user/main/dashboard_template');
 

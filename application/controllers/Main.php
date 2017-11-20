@@ -21,7 +21,7 @@ class Main extends CI_Controller {
             $this->load->view('user/common/header', $data);
             $this->load->view('user/main/main');
             $this->load->view('user/common/footer');
-//            $this->load->view('user/common/backbone_footer');
+            $this->load->view('user/common/backbone_footer');
         }
     }
 
