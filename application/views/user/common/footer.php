@@ -1,22 +1,42 @@
 <?php $base_url = base_url(); ?>
-<script type="text/javascript">
-    $('.select2').on('keypress', function () {
-        $(this).focus();
-    });
-
-    $.ajaxSetup({
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log(jqXHR);
-            console.log(textStatus);
-            console.log(errorThrown);
-            showError("An Unexpected Error has occured. Please try refreshing the page with Ctrl+F5. If Error Persists please contact support with the scenario.");
-        }
-    });
-</script>
-<footer class="main-footer">
-    <div class="pull-right hidden-xs">
+<section id="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="copyright-text text-center">
+                    ©Designed and Developed by 
+                    <a rel="nofollow" href="">
+                        Tank Kalpesh
+                    </a>
+                </p>
+            </div>
+        </div>
     </div>
-    <strong>Copyright &copy; 2017 Event Management. All Rights Reserved.</strong>
-</footer>
+</section> 
+<!-- Go to Top Link -->
+<a href="#" class="back-to-top">
+    <i class="icon-arrow-up"></i>
+</a>
+<script src="<?php echo $base_url; ?>js/user/jquery.countdown.min.js"></script>
+<!-- Smooth scroll JS -->   
+<script src="<?php echo $base_url; ?>js/user/smooth-scroll.js"></script>        
+<!-- Wow Scroll -->
+<script src="<?php echo $base_url; ?>js/user/wow.js"></script>
+<!-- Owl carousel -->
+<script src="<?php echo $base_url; ?>js/user/owl.carousel.min.js"></script>
+<!-- Slicknav js -->
+<script src="<?php echo $base_url; ?>js/user/jquery.slicknav.js"></script>
+<!--  Nivo lightbox Js -->
+<script src="<?php echo $base_url; ?>js/user/nivo-lightbox.js"></script>   
+<!-- Contact Form Scripts -->
+<script src="<?php echo $base_url; ?>js/user/form-validator.min.js"></script>  
+<script src="<?php echo $base_url; ?>js/user/contact-form-script.js"></script>    
+
+<!-- All Js plugin -->
+<script src="<?php echo $base_url; ?>js/user/main.js"></script> 
+<!-- Map JS -->
+<script type="text/javascript" src="<?php echo $base_url; ?>js/user/jquery.mapit.min.js"></script>
+<script src="<?php echo $base_url; ?>js/user/initializers.js"></script>
+
 </body>
 </html>

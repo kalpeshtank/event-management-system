@@ -1,5 +1,7 @@
 <?php
 
+define('USER_COMING_SOON', FALSE);
+define('ADMIN_COMING_SOON', FALSE);
 /**
  * Event Organized For 
  */
