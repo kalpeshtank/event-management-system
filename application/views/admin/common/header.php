@@ -129,6 +129,8 @@
             var eventTypeArray = <?php echo json_encode($this->config->item('event_type_array')); ?>;
             var userTypeArray = <?php echo json_encode($this->config->item('user_type_array')); ?>;
             var statusArray = <?php echo json_encode($this->config->item('status_array')); ?>;
+            var divisionArray = <?php echo json_encode($this->config->item('division_array')); ?>;
+            var semesterArray = <?php echo json_encode($this->config->item('semester_array')); ?>;
             var categoryData =<?php echo json_encode($category); ?>;
             var userData =<?php echo json_encode($user_data); ?>;
             var subCategoryData =<?php echo json_encode($sub_category); ?>;
@@ -148,9 +150,9 @@
                 <!-- Logo -->
                 <a href="#" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
-                    <span class="logo-mini"><b>EMS</b></span>
+                    <!--<span class="logo-mini"><b>EMS</b></span>-->
                     <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg"><b>Event-Management</b></span>
+                    <!--<span class="logo-lg"><b>Event-Management</b></span>-->
                 </a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top">

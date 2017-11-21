@@ -43,3 +43,36 @@ $config['status_array'] = array(
     IS_ACTIVE_YES => 'Active',
     IS_ACTIVE_NO => 'Processing'
 );
+/**
+ * semester config
+ */
+define('ONE', 1);
+define('TWO', 2);
+define('THREE', 3);
+define('FOUR', 4);
+define('FIVE', 5);
+define('SIX', 6);
+define('SEVEN', 7);
+define('EIGHT', 8);
+
+$config['semester_array'] = array(
+    ONE => 'Sem-1',
+    TWO => 'Sem-2',
+    THREE => 'Sem-3',
+    FOUR => 'Sem-4',
+    FIVE => 'Sem-5',
+    SIX => 'Sem-6'
+);
+/**
+ * Division
+ */
+$config['division_array'] = array(
+    ONE => 'Div-I',
+    TWO => 'Div-II',
+    THREE => 'Div-III',
+    FOUR => 'Div-IV',
+    FIVE => 'Div-V',
+    SIX => 'Div-VI',
+    SEVEN => 'Div-VII',
+    EIGHT => 'Div-VIII'
+);

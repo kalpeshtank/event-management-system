@@ -29,6 +29,11 @@
                         <i class="fa fa-user"></i> <span>User</span>
                     </a>
                 </li>
+                <li>
+                    <a href="admin#student/list">
+                        <i class="fa fa-graduation-cap"></i> <span>Student Master</span>
+                    </a>
+                </li>
             <?php } ?>
         </ul>
     </section>
