@@ -71,4 +71,12 @@ class Student_master_model extends CI_Model {
         return $recs->result_array();
     }
 
+    /**
+     * create student data 
+     * @param type $uploaded_statement_entries_batch
+     */
+    function create_uploaded_statement_entries_batch($uploaded_statement_entries_batch) {
+        $this->db->insert_batch('student_master', $uploaded_statement_entries_batch);
+    }
+
 }

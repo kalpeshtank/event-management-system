@@ -1,6 +1,6 @@
 <?php
 
-define('USER_COMING_SOON', FALSE);
+define('USER_COMING_SOON', TRUE);
 define('ADMIN_COMING_SOON', FALSE);
 /**
  * Event Organized For 
@@ -56,12 +56,12 @@ define('SEVEN', 7);
 define('EIGHT', 8);
 
 $config['semester_array'] = array(
-    ONE => 'Sem-1',
-    TWO => 'Sem-2',
-    THREE => 'Sem-3',
-    FOUR => 'Sem-4',
-    FIVE => 'Sem-5',
-    SIX => 'Sem-6'
+    ONE => 'Sem-I',
+    TWO => 'Sem-II',
+    THREE => 'Sem-III',
+    FOUR => 'Sem-IV',
+    FIVE => 'Sem-V',
+    SIX => 'Sem-VI'
 );
 /**
  * Division
