@@ -202,6 +202,12 @@ StudentMaster.listView = Backbone.View.extend({
             "url": 'admin/student_master/upload_student_statement',
             type: 'post',
             success: function (response) {
+                if (response == 'file_not_readable') {
+                    showError('File Not Readable Plase Select Propar File');
+                    $('#save_student_upload_btn').show();
+                    $('#spinner_student_upload_btn').html('');
+                    $('#spinner_student_upload_btn').hide();
+                }
                 var parseData = JSON.parse(response);
                 if (parseData.success === false) {
                     $('#save_student_upload_btn').show();
